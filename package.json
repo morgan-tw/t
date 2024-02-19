@@ -1,0 +1,17 @@
+{
+  "name": "gilded-rose",
+  "version": "0.0.0",
+  "description": "Kata to improve refactoring skills and safety net",
+  "keywords": [
+    "kata",
+    "refactoring",
+    "gilded-rose",
+    "javascript",
+    "jest"
+  ],
+  "licence": "MIT",
+  "private": true,
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
