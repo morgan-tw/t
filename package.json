@@ -11,6 +11,12 @@
   ],
   "licence": "MIT",
   "private": true,
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "texttest": "node test/texttest_fixture.js"
+  },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
