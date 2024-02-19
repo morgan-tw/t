@@ -24,4 +24,22 @@ describe("Gilded Rose", () => {
       expect(anotherItem.updateQuality).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe("for an AgedBrie", () => {
+    const itDecreasesTheSellInByOne = (originalSellIn, expectedSellIn) =>
+      it(`decreases the sell in by one, like from ${originalSellIn} to ${expectedSellIn}`, () => {
+        const agedBrie = {
+          name: "AgedBrie",
+          sellIn: originalSellIn,
+          quality: 15,
+          updateQuality: jest.fn(),
+        };
+        const guildedRose = createGildedRose([agedBrie]);
+        guildedRose.updateQuality();
+        expect(agedBrie.sellIn).toEqual(expectedSellIn);
+      });
+
+    itDecreasesTheSellInByOne(5, 4);
+    itDecreasesTheSellInByOne(2, 1);
+  });
 });
