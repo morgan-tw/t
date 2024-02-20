@@ -7,13 +7,13 @@ export const createGildedRose = (originalItems) => {
 
       item.updateQuality();
       if (item.name != "AgedBrie" && item.name != "Backstage pass") {
-        if (item.quality.getValue() > 0) {
+        if (item.quality.isGreaterThan(0)) {
           if (item.name != "Legendary") {
             item.quality.setValue(item.quality.getValue() - 1);
           }
         }
       } else {
-        if (item.quality.getValue() < 50) {
+        if (item.quality.isLessThan(50)) {
           item.quality.setValue(item.quality.getValue() + 1);
           if (item.name == "Backstage pass") {
             if (item.sellIn < 11) {
@@ -22,7 +22,7 @@ export const createGildedRose = (originalItems) => {
               }
             }
             if (item.sellIn < 6) {
-              if (item.quality.getValue() < 50) {
+              if (item.quality.isLessThan(50)) {
                 item.quality.setValue(item.quality.getValue() + 1);
               }
             }
@@ -35,7 +35,7 @@ export const createGildedRose = (originalItems) => {
       if (item.sellIn < 0) {
         if (item.name != "AgedBrie") {
           if (item.name != "Backstage pass") {
-            if (item.quality.getValue() > 0) {
+            if (item.quality.isGreaterThan(0)) {
               if (item.name != "Legendary") {
                 item.quality.setValue(item.quality.getValue() - 1);
               }
@@ -46,7 +46,7 @@ export const createGildedRose = (originalItems) => {
             );
           }
         } else {
-          if (item.quality.getValue() < 50) {
+          if (item.quality.isLessThan(50)) {
             item.quality.setValue(item.quality.getValue() + 1);
           }
         }

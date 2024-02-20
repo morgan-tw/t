@@ -12,6 +12,8 @@ describe("Gilded Rose", () => {
         quality: {
           getValue: jest.fn(),
           setValue: jest.fn(),
+          isGreaterThan: jest.fn(),
+          isLessThan: jest.fn(),
         },
         updateQuality: jest.fn(),
       };
