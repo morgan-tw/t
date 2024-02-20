@@ -164,6 +164,36 @@ describe("Gilded Rose", () => {
             .then()
             .itsQualityShouldFollowThisPath("25 -> 22 -> 19");
         });
+
+        describe("but never bellow 0", () => {
+          it(`when its quality was already 0, like 0 -> 0`, () => {
+            Given()
+              .anItem(aBackstagePass().getInstance())
+              .then()
+              .itsQualityShouldFollowThisPath("0 -> 0");
+          });
+
+          it(`when it is far from the concert date, like 1 -> 0 -> 0`, () => {
+            Given()
+              .anItem(aBackstagePass().farFromConcertDate(15).getInstance())
+              .then()
+              .itsQualityShouldFollowThisPath("1 -> 0 -> 0");
+          });
+
+          it(`even when it is close to the concert date, like 1 -> 0 -> 0`, () => {
+            Given()
+              .anItem(aBackstagePass().closeToConcertDate(9).getInstance())
+              .then()
+              .itsQualityShouldFollowThisPath("1 -> 0 -> 0");
+          });
+
+          it(`even when it is very close to the concert date, like 1 -> 0 -> 0`, () => {
+            Given()
+              .anItem(aBackstagePass().veryCloseToConcertDate(4).getInstance())
+              .then()
+              .itsQualityShouldFollowThisPath("1 -> 0 -> 0");
+          });
+        });
       });
     });
   });

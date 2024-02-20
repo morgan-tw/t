@@ -30,8 +30,13 @@ export const createGildedRose = (originalItems) => {
             item.quality -= 1;
           }
         }
+
+        if (item.quality < 0) {
+          item.quality = 0;
+        }
       }
     });
+
     return this;
   }
 
