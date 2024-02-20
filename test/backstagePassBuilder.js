@@ -1,3 +1,5 @@
+import { quality } from "../src/quality";
+
 export const aBackstagePass = () => {
   let sellIn = 0,
     aQuality = 0;
@@ -16,7 +18,7 @@ export const aBackstagePass = () => {
     return {
       name: "Backstage pass",
       sellIn: sellIn,
-      quality: aQuality,
+      quality: quality(aQuality).getValue(),
       updateQuality: jest.fn(),
     };
   }
