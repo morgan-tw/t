@@ -1,6 +1,7 @@
 import { createGildedRose } from "../src/gildedRose";
 import { anAgedBrie } from "./agedBrieBuilder";
 import { aLegendaryItem } from "./lengendaryItemBuilder";
+import { aBackstagePass } from "./backstagePassBuilder";
 import { Given } from "./scenario";
 
 describe("Gilded Rose", () => {
@@ -37,11 +38,11 @@ describe("Gilded Rose", () => {
           .itsSellInShouldFollowThisPath("15 -> 14 -> 13 -> 12 -> 11 -> 10");
       });
 
-      it(`even bellow zero like 1 => 0 => -1 => -2`, () => {
+      it(`even bellow zero like 1 -> 0 -> -1 -> -2`, () => {
         Given()
           .anItem(anAgedBrie().getInstance())
           .then()
-          .itsSellInShouldFollowThisPath("1 => 0 => -1 => -2");
+          .itsSellInShouldFollowThisPath("1 -> 0 -> -1 -> -2");
       });
     });
 
@@ -121,6 +122,24 @@ describe("Gilded Rose", () => {
             .anItem(aLegendaryItem().getInstance())
             .then()
             .itsQualityShouldFollowThisPath("-65 -> -65 -> -65 -> -65");
+        });
+      });
+    });
+
+    describe("for a backstage pass", () => {
+      describe("decreases the sell in", () => {
+        it(`by one whatever its quality is, like 15 -> 14 -> 13 -> 12 -> 11 -> 10`, () => {
+          Given()
+            .anItem(aBackstagePass().getInstance())
+            .then()
+            .itsSellInShouldFollowThisPath("15 -> 14 -> 13 -> 12 -> 11 -> 10");
+        });
+
+        it(`even bellow zero like 1 -> 0 -> -1 -> -2`, () => {
+          Given()
+            .anItem(aBackstagePass().getInstance())
+            .then()
+            .itsSellInShouldFollowThisPath("1 -> 0 -> -1 -> -2");
         });
       });
     });
