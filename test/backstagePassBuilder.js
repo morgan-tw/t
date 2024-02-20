@@ -21,9 +21,15 @@ export const aBackstagePass = () => {
     };
   }
 
+  function farFromConcertDate(daysBeforeConcert) {
+    expect(daysBeforeConcert).toBeGreaterThan(10);
+    return this;
+  }
+
   return {
     getInstance,
     withQuality,
     withSellIn,
+    farFromConcertDate,
   };
 };

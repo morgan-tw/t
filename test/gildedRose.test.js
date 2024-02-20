@@ -142,6 +142,15 @@ describe("Gilded Rose", () => {
             .itsSellInShouldFollowThisPath("1 -> 0 -> -1 -> -2");
         });
       });
+
+      describe("decreases the quality", () => {
+        it("by one when the concert if far", () => {
+          Given()
+            .anItem(aBackstagePass().farFromConcertDate(15).getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("15 -> 14 -> 13");
+        });
+      });
     });
   });
 });

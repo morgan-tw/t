@@ -11,14 +11,18 @@ export const createGildedRose = (originalItems) => {
       }
 
       if (item.name !== "Legendary") {
-        if (item.quality < 50) {
-          item.quality += 1;
+        if (item.name !== "Backstage pass") {
+          if (item.quality < 50) {
+            item.quality += 1;
 
-          if (item.sellIn < 0) {
-            if (item.quality < 50) {
-              item.quality += 1;
+            if (item.sellIn < 0) {
+              if (item.quality < 50) {
+                item.quality += 1;
+              }
             }
           }
+        } else {
+          item.quality -= 1;
         }
       }
     });
