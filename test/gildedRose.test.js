@@ -224,6 +224,20 @@ describe("Gilded Rose", () => {
     });
 
     describe("decreases the quality", () => {
+      it("by one when the item has not passed out, like 25 -> 24 -> 23", () => {
+        Given()
+          .anItem(aStandardItem().withSellIn(25).getInstance())
+          .then()
+          .itsQualityShouldFollowThisPath("25 -> 24 -> 23");
+      });
+
+      it("by two when the item has passed out, like 25 -> 23 -> 21", () => {
+        Given()
+          .anItem(aStandardItem().withSellIn(-10).getInstance())
+          .then()
+          .itsQualityShouldFollowThisPath("25 -> 23 -> 21");
+      });
+
       describe("but never bellow 0", () => {
         it(`when its quality was already 0, like 0 -> 0`, () => {
           Given()

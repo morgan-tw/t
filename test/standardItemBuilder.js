@@ -20,7 +20,7 @@ export const aStandardItem = () => {
 
   function getInstance() {
     return {
-      name: "Backstage pass",
+      name: "Standard item",
       sellIn: sellIn,
       quality: quality,
       updateQuality: jest.fn(),
