@@ -92,11 +92,36 @@ describe("Gilded Rose", () => {
     });
 
     describe("for a legendary item", () => {
-      it("never changes the sellIn over time as it is never pass out like 80 -> 80 -> 80 -> 80", () => {
-        Given()
-          .anItem(aLegendaryItem().getInstance())
-          .then()
-          .itsSellInShouldFollowThisPath("80 -> 80 -> 80 -> 80");
+      describe("never changes the sellIn over time as it is never pass out", () => {
+        it("like 80 -> 80 -> 80 -> 80", () => {
+          Given()
+            .anItem(aLegendaryItem().getInstance())
+            .then()
+            .itsSellInShouldFollowThisPath("80 -> 80 -> 80 -> 80");
+        });
+
+        it("like -65 -> -65 -> -65 -> -65", () => {
+          Given()
+            .anItem(aLegendaryItem().getInstance())
+            .then()
+            .itsSellInShouldFollowThisPath("-65 -> -65 -> -65 -> -65");
+        });
+      });
+
+      describe("never changes the quality over time as it is never age", () => {
+        it("like 80 -> 80 -> 80 -> 80", () => {
+          Given()
+            .anItem(aLegendaryItem().getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("80 -> 80 -> 80 -> 80");
+        });
+
+        it("like -65 -> -65 -> -65 -> -65", () => {
+          Given()
+            .anItem(aLegendaryItem().getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("-65 -> -65 -> -65 -> -65");
+        });
       });
     });
   });
