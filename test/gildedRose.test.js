@@ -1,102 +1,6 @@
 import { createGildedRose } from "../src/gildedRose";
-
-const anAgedBrie = () => {
-  let sellIn, quality;
-
-  function withSellIn(givenSellIn) {
-    sellIn = givenSellIn;
-    return this;
-  }
-
-  function withQuality(givenQuality) {
-    quality = givenQuality;
-    return this;
-  }
-
-  function getInstance() {
-    return {
-      name: "AgedBrie",
-      sellIn: sellIn,
-      quality: quality,
-      updateQuality: jest.fn(),
-    };
-  }
-
-  return {
-    getInstance,
-    withQuality,
-    withSellIn,
-  };
-};
-
-const Given = () => {
-  let item;
-
-  function self() {
-    return this;
-  }
-
-  function anItem(givenItem) {
-    item = givenItem;
-    return this;
-  }
-
-  function weUpdateItsQuality() {
-    const guildedRose = createGildedRose([item]);
-    guildedRose.updateQuality();
-    return this;
-  }
-
-  function itsSellInShouldBe(expectedSellIn) {
-    expect(item.sellIn).toEqual(expectedSellIn);
-    return this;
-  }
-
-  function parseExpectedPath(expectedPathExpression) {
-    return expectedPathExpression
-      .split(" -> ")
-      .map((sellInExpression) => parseInt(sellInExpression));
-  }
-
-  function itsSellInShouldFollowThisPath(expectedSellInExpression) {
-    const expectedSellIn = parseExpectedPath(expectedSellInExpression);
-    item.sellIn = expectedSellIn[0];
-    for (let i = 1; i < expectedSellIn.length; ++i) {
-      weUpdateItsQuality();
-      itsSellInShouldBe(expectedSellIn[i]);
-    }
-    return this;
-  }
-
-  function itsQualityShouldFollowThisPath(expectedQualityExpression) {
-    const expectedQuality = parseExpectedPath(expectedQualityExpression);
-    item.quality = expectedQuality[0];
-    for (let i = 1; i < expectedQuality.length; ++i) {
-      weUpdateItsQuality();
-      itsQualityShouldBe(expectedQuality[i]);
-    }
-    return this;
-  }
-
-  function itsQualityShouldBe(expectedQuality) {
-    expect(item.quality).toEqual(expectedQuality);
-    return this;
-  }
-
-  return {
-    given: self,
-    when: self,
-    then: self,
-    and: self,
-    but: self,
-    anItem,
-    weUpdateItsQuality,
-    itsSellInShouldBe,
-    itsQualityShouldBe,
-    itsSellInShouldFollowThisPath,
-    itsQualityShouldFollowThisPath,
-  };
-};
+import { anAgedBrie } from "./agedBrieBuilder";
+import { Given } from "./scenario";
 
 describe("Gilded Rose", () => {
   describe("update the quality", () => {
@@ -124,18 +28,20 @@ describe("Gilded Rose", () => {
   });
 
   describe("for an AgedBrie", () => {
-    it(`decreases the sell in by one whatever its quality is, like 15 -> 14 -> 13 -> 12 -> 11 -> 10`, () => {
-      Given()
-        .anItem(anAgedBrie().getInstance())
-        .then()
-        .itsSellInShouldFollowThisPath("15 -> 14 -> 13 -> 12 -> 11 -> 10");
-    });
+    describe("decreases the sell in", () => {
+      it(`by one whatever its quality is, like 15 -> 14 -> 13 -> 12 -> 11 -> 10`, () => {
+        Given()
+          .anItem(anAgedBrie().getInstance())
+          .then()
+          .itsSellInShouldFollowThisPath("15 -> 14 -> 13 -> 12 -> 11 -> 10");
+      });
 
-    it(`decreases the sell in even bellow zero like 1 => 0 => -1 => -2`, () => {
-      Given()
-        .anItem(anAgedBrie().getInstance())
-        .then()
-        .itsSellInShouldFollowThisPath("1 => 0 => -1 => -2");
+      it(`even bellow zero like 1 => 0 => -1 => -2`, () => {
+        Given()
+          .anItem(anAgedBrie().getInstance())
+          .then()
+          .itsSellInShouldFollowThisPath("1 => 0 => -1 => -2");
+      });
     });
 
     describe("it increases the quality over time", () => {
