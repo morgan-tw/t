@@ -138,47 +138,49 @@ describe("Gilded Rose", () => {
         .itsSellInShouldFollowThisPath("1 => 0 => -1 => -2");
     });
 
-    describe("it decreases the quality", () => {
-      it(`by one when the sell in is over 0, like 40 -> 39 -> 38 -> 37`, () => {
+    describe("it increases the quality over time", () => {
+      it(`by one as long as the brie is not mature, like 40 -> 41 -> 42 -> 43`, () => {
         Given()
           .anItem(anAgedBrie().withSellIn(50).getInstance())
           .then()
-          .itsQualityShouldFollowThisPath("40 -> 39 -> 38 -> 37");
+          .itsQualityShouldFollowThisPath("40 -> 41 -> 42 -> 43");
       });
 
-      it(`by two when the sell in is bellow 0, like -2 -> -4 -> -6 -> -8`, () => {
+      it(`by two once the brie is mature, like 10 -> 12 -> 14 -> 16`, () => {
         Given()
           .anItem(anAgedBrie().withSellIn(-10).getInstance())
           .then()
-          .itsQualityShouldFollowThisPath("10 -> 8 -> 6 -> 4");
+          .itsQualityShouldFollowThisPath("10 -> 12 -> 14 -> 16");
       });
 
-      it(`by two only if the item is already bellow zero`, () => {
+      it(`by two only if is mature already and not about to`, () => {
         Given()
           .anItem(anAgedBrie().withSellIn(1).getInstance())
           .then()
-          .itsQualityShouldFollowThisPath("10 -> 9 -> 7 -> 5");
+          .itsQualityShouldFollowThisPath("10 -> 11 -> 13 -> 15");
       });
 
-      it(`never bellow 0 when the brie is young, like 2 -> 1 -> 0 -> 0`, () => {
-        Given()
-          .anItem(anAgedBrie().withSellIn(15).getInstance())
-          .then()
-          .itsQualityShouldFollowThisPath("2 -> 1 -> 0 -> 0");
-      });
+      describe("but never over 50", () => {
+        it(`when its quality was already 50, like 50 -> 50`, () => {
+          Given()
+            .anItem(anAgedBrie().withSellIn(0).getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("50 -> 50");
+        });
 
-      it(`never bellow 0 even when the brie is mature, like 1 -> 0 -> 0`, () => {
-        Given()
-          .anItem(anAgedBrie().withSellIn(0).getInstance())
-          .then()
-          .itsQualityShouldFollowThisPath("1 -> 0 -> 0");
-      });
+        it(`when the brie is young, like 48 -> 49 -> 50 -> 50`, () => {
+          Given()
+            .anItem(anAgedBrie().withSellIn(15).getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("48 -> 49 -> 50 -> 50");
+        });
 
-      it(`never bellow 0 even when it's quality was already 0, like 0 -> 0`, () => {
-        Given()
-          .anItem(anAgedBrie().withSellIn(0).getInstance())
-          .then()
-          .itsQualityShouldFollowThisPath("0 -> 0");
+        it(`even when the brie is mature, like 47 -> 49 -> 50 -> 50`, () => {
+          Given()
+            .anItem(anAgedBrie().withSellIn(0).getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("47 -> 49 -> 50 -> 50");
+        });
       });
     });
   });
