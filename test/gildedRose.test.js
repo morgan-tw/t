@@ -145,62 +145,83 @@ describe("Gilded Rose", () => {
       });
     });
 
-    describe("decreases the quality", () => {
-      it("by one when the concert is far (more than 10 days ahead), like 25 -> 24 -> 23", () => {
+    describe("increases the quality", () => {
+      it("by one when the concert is far (more than 10 days ahead), like 25 -> 26 -> 27", () => {
         Given()
           .anItem(aBackstagePass().farFromConcertDate(15).getInstance())
           .then()
-          .itsQualityShouldFollowThisPath("25 -> 24 -> 23");
+          .itsQualityShouldFollowThisPath("25 -> 26 -> 27");
       });
 
-      it("by two as soon as the concert is close, like 25 -> 23 -> 21", () => {
+      it("by two as soon as the concert is close, like 25 -> 27 -> 29", () => {
         Given()
           .anItem(aBackstagePass().closeToConcertDate(10).getInstance())
           .then()
-          .itsQualityShouldFollowThisPath("25 -> 23 -> 21");
+          .itsQualityShouldFollowThisPath("25 -> 27 -> 29");
       });
 
-      it("by three as soon as the concert is very close, like 25 -> 22 -> 19", () => {
+      it("by three as soon as the concert is very close, like 25 -> 28 -> 31", () => {
         Given()
           .anItem(aBackstagePass().veryCloseToConcertDate(5).getInstance())
           .then()
-          .itsQualityShouldFollowThisPath("25 -> 22 -> 19");
+          .itsQualityShouldFollowThisPath("25 -> 28 -> 31");
       });
 
       it("down to zero once the concert is passed", () => {
         Given()
           .anItem(aBackstagePass().veryCloseToConcertDate(1).getInstance())
           .then()
-          .itsQualityShouldFollowThisPath("15 -> 12 -> 0");
+          .itsQualityShouldFollowThisPath("15 -> 18 -> 0");
       });
 
-      describe("but never bellow 0", () => {
-        it(`when its quality was already 0, like 0 -> 0`, () => {
+      describe("but never over 50", () => {
+        it(`when its quality was already 50, like 50 -> 50`, () => {
           Given()
-            .anItem(aBackstagePass().getInstance())
+            .anItem(aBackstagePass().farFromConcertDate(20).getInstance())
             .then()
-            .itsQualityShouldFollowThisPath("0 -> 0");
+            .itsQualityShouldFollowThisPath("50 -> 50");
         });
 
-        it(`when it is far from the concert date, like 1 -> 0 -> 0`, () => {
+        it(`when it is far from the concert date, like 49 -> 50 -> 50`, () => {
           Given()
             .anItem(aBackstagePass().farFromConcertDate(15).getInstance())
             .then()
-            .itsQualityShouldFollowThisPath("1 -> 0 -> 0");
+            .itsQualityShouldFollowThisPath("49 -> 50 -> 50");
         });
 
-        it(`even when it is close to the concert date, like 1 -> 0 -> 0`, () => {
+        it(`even when it is close to the concert date, like 49 -> 50 -> 50`, () => {
           Given()
             .anItem(aBackstagePass().closeToConcertDate(9).getInstance())
             .then()
-            .itsQualityShouldFollowThisPath("1 -> 0 -> 0");
+            .itsQualityShouldFollowThisPath("49 -> 50 -> 50");
         });
 
-        it(`even when it is very close to the concert date, like 1 -> 0 -> 0`, () => {
+        it(`even when it is close to the concert date, like 48 -> 50 -> 50`, () => {
+          Given()
+            .anItem(aBackstagePass().closeToConcertDate(9).getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("48 -> 50 -> 50");
+        });
+
+        it(`even when it is very close to the concert date, like 49 -> 50 -> 50`, () => {
           Given()
             .anItem(aBackstagePass().veryCloseToConcertDate(4).getInstance())
             .then()
-            .itsQualityShouldFollowThisPath("1 -> 0 -> 0");
+            .itsQualityShouldFollowThisPath("49 -> 50 -> 50");
+        });
+
+        it(`even when it is very close to the concert date, like 48 -> 50 -> 50`, () => {
+          Given()
+            .anItem(aBackstagePass().veryCloseToConcertDate(4).getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("48 -> 50 -> 50");
+        });
+
+        it(`even when it is very close to the concert date, like 47 -> 50 -> 50`, () => {
+          Given()
+            .anItem(aBackstagePass().veryCloseToConcertDate(4).getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("47 -> 50 -> 50");
         });
       });
     });
