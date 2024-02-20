@@ -14,7 +14,9 @@ export const createGildedRose = (originalItems) => {
             item.quality = item.quality.decreaseBy(1);
           }
         }
-      } else {
+      }
+
+      if (item.name == "AgedBrie" || item.name == "Backstage pass") {
         if (item.quality.isLessThan(50)) {
           item.quality = item.quality.increaseBy(1);
           if (item.name == "Backstage pass") {
@@ -42,10 +44,12 @@ export const createGildedRose = (originalItems) => {
                 item.quality = item.quality.decreaseBy(1);
               }
             }
-          } else {
+          }
+          if (item.name == "Backstage pass") {
             item.quality = quality(0);
           }
-        } else {
+        }
+        if (item.name == "AgedBrie") {
           if (item.quality.isLessThan(50)) {
             item.quality = item.quality.increaseBy(1);
           }
