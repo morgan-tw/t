@@ -1,8 +1,26 @@
 export const anAgedBrie = () => {
-  let sellIn, quality;
+  let sellIn = 0,
+    quality = 0;
 
   function withSellIn(givenSellIn) {
     sellIn = givenSellIn;
+    return this;
+  }
+
+  function thatIsMatureWith(givenSellIn) {
+    expect(givenSellIn).toBeLessThan(0);
+    withSellIn(givenSellIn);
+    return this;
+  }
+
+  function thatIsYoungWith(givenSellIn) {
+    expect(givenSellIn).toBeGreaterThan(0);
+    withSellIn(givenSellIn);
+    return this;
+  }
+
+  function thatIsAboutToArriveAtMaturity() {
+    withSellIn(1);
     return this;
   }
 
@@ -24,5 +42,8 @@ export const anAgedBrie = () => {
     getInstance,
     withQuality,
     withSellIn,
+    thatIsMatureWith,
+    thatIsYoungWith,
+    thatIsAboutToArriveAtMaturity,
   };
 };

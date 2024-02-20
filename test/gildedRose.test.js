@@ -54,14 +54,14 @@ describe("Gilded Rose", () => {
 
       it(`by two once the brie is mature, like 10 -> 12 -> 14 -> 16`, () => {
         Given()
-          .anItem(anAgedBrie().withSellIn(-10).getInstance())
+          .anItem(anAgedBrie().thatIsMatureWith(-10).getInstance())
           .then()
           .itsQualityShouldFollowThisPath("10 -> 12 -> 14 -> 16");
       });
 
-      it(`by two only if is mature already and not about to`, () => {
+      it(`by only one if the brie is about to arrive at maturity but is not mature yet`, () => {
         Given()
-          .anItem(anAgedBrie().withSellIn(1).getInstance())
+          .anItem(anAgedBrie().thatIsAboutToArriveAtMaturity().getInstance())
           .then()
           .itsQualityShouldFollowThisPath("10 -> 11 -> 13 -> 15");
       });
@@ -69,21 +69,21 @@ describe("Gilded Rose", () => {
       describe("but never over 50", () => {
         it(`when its quality was already 50, like 50 -> 50`, () => {
           Given()
-            .anItem(anAgedBrie().withSellIn(0).getInstance())
+            .anItem(anAgedBrie().getInstance())
             .then()
             .itsQualityShouldFollowThisPath("50 -> 50");
         });
 
         it(`when the brie is young, like 48 -> 49 -> 50 -> 50`, () => {
           Given()
-            .anItem(anAgedBrie().withSellIn(15).getInstance())
+            .anItem(anAgedBrie().thatIsYoungWith(15).getInstance())
             .then()
             .itsQualityShouldFollowThisPath("48 -> 49 -> 50 -> 50");
         });
 
         it(`even when the brie is mature, like 47 -> 49 -> 50 -> 50`, () => {
           Given()
-            .anItem(anAgedBrie().withSellIn(0).getInstance())
+            .anItem(anAgedBrie().thatIsMatureWith(-10).getInstance())
             .then()
             .itsQualityShouldFollowThisPath("47 -> 49 -> 50 -> 50");
         });
