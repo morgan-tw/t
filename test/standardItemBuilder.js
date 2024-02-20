@@ -24,7 +24,7 @@ export const aStandardItem = () => {
     return {
       name: "Standard item",
       sellIn: sellIn,
-      quality: quality(aQuality).getValue(),
+      quality: quality(aQuality),
       updateQuality: jest.fn(),
     };
   }

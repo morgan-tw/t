@@ -35,7 +35,7 @@ export const anAgedBrie = () => {
     return {
       name: "AgedBrie",
       sellIn: sellIn,
-      quality: quality(aQuality).getValue(),
+      quality: quality(aQuality),
       updateQuality: jest.fn(),
     };
   }

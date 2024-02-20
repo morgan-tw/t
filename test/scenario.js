@@ -41,7 +41,7 @@ export const Given = () => {
 
   function itsQualityShouldFollowThisPath(expectedQualityExpression) {
     const expectedQuality = parseExpectedPath(expectedQualityExpression);
-    item.quality = expectedQuality[0];
+    item.quality.setValue(expectedQuality[0]);
     for (let i = 1; i < expectedQuality.length; ++i) {
       weUpdateItsQuality();
       itsQualityShouldBe(expectedQuality[i]);
@@ -50,7 +50,7 @@ export const Given = () => {
   }
 
   function itsQualityShouldBe(expectedQuality) {
-    expect(item.quality).toEqual(expectedQuality);
+    expect(item.quality.getValue()).toEqual(expectedQuality);
     return this;
   }
 

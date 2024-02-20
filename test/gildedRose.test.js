@@ -9,6 +9,10 @@ describe("Gilded Rose", () => {
   describe("update the quality", () => {
     const createItem = () => {
       return {
+        quality: {
+          getValue: jest.fn(),
+          setValue: jest.fn(),
+        },
         updateQuality: jest.fn(),
       };
     };
