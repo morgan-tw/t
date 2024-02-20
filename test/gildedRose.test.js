@@ -1,5 +1,88 @@
 import { createGildedRose } from "../src/gildedRose";
 
+const anAgedBrie = () => {
+  let sellIn, quality;
+
+  function withSellIn(givenSellIn) {
+    sellIn = givenSellIn;
+    return this;
+  }
+
+  function withQuality(givenQuality) {
+    quality = givenQuality;
+    return this;
+  }
+
+  function getInstance() {
+    return {
+      name: "AgedBrie",
+      sellIn: sellIn,
+      quality: quality,
+      updateQuality: jest.fn(),
+    };
+  }
+
+  return {
+    getInstance,
+    withQuality,
+    withSellIn,
+  };
+};
+
+const Given = () => {
+  let item;
+
+  function self() {
+    return this;
+  }
+
+  function anItem(givenItem) {
+    item = givenItem;
+    return this;
+  }
+
+  function weUpdateItsQuality() {
+    const guildedRose = createGildedRose([item]);
+    guildedRose.updateQuality();
+    return this;
+  }
+
+  function itsSellInShouldBe(expectedSellIn) {
+    expect(item.sellIn).toEqual(expectedSellIn);
+    return this;
+  }
+
+  function itsSellInShouldFollowThisPath(expectedSellInArray) {
+    const expectedSellIn = expectedSellInArray
+      .split(" -> ")
+      .map((sellInExpression) => parseInt(sellInExpression));
+    item.sellIn = expectedSellIn[0];
+    for (let i = 1; i < expectedSellIn.length; ++i) {
+      weUpdateItsQuality();
+      itsSellInShouldBe(expectedSellIn[i]);
+    }
+    return this;
+  }
+
+  function itsQualityShouldBe(expectedQuality) {
+    expect(item.quality).toEqual(expectedQuality);
+    return this;
+  }
+
+  return {
+    given: self,
+    when: self,
+    then: self,
+    and: self,
+    but: self,
+    anItem,
+    weUpdateItsQuality,
+    itsSellInShouldBe,
+    itsQualityShouldBe,
+    itsSellInShouldFollowThisPath,
+  };
+};
+
 describe("Gilded Rose", () => {
   describe("update the quality", () => {
     const createItem = () => {
@@ -26,21 +109,19 @@ describe("Gilded Rose", () => {
   });
 
   describe("for an AgedBrie", () => {
-    const itDecreasesTheSellInByOne = (originalSellIn, expectedSellIn) =>
-      it(`decreases the sell in by one, like from ${originalSellIn} to ${expectedSellIn}`, () => {
-        const agedBrie = {
-          name: "AgedBrie",
-          sellIn: originalSellIn,
-          quality: 15,
-          updateQuality: jest.fn(),
-        };
-        const guildedRose = createGildedRose([agedBrie]);
-        guildedRose.updateQuality();
-        expect(agedBrie.sellIn).toEqual(expectedSellIn);
-      });
+    it(`decreases the sell in by one whatever its quality is, like 15 -> 14 -> 13 -> 12 -> 11 -> 10`, () => {
+      Given()
+        .anItem(anAgedBrie().getInstance())
+        .then()
+        .itsSellInShouldFollowThisPath("15 -> 14 -> 13 -> 12 -> 11 -> 10");
+    });
 
-    itDecreasesTheSellInByOne(5, 4);
-    itDecreasesTheSellInByOne(2, 1);
+    it(`decreases the sell in even bellow zero like 1 => 0 => -1 => -2`, () => {
+      Given()
+        .anItem(anAgedBrie().getInstance())
+        .then()
+        .itsSellInShouldFollowThisPath("1 => 0 => -1 => -2");
+    });
 
     describe("it decreases the quality", () => {
       const itDecreaseTheQualityByOneWhenSellInIsOver0 = (
