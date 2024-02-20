@@ -165,6 +165,13 @@ describe("Gilded Rose", () => {
             .itsQualityShouldFollowThisPath("25 -> 22 -> 19");
         });
 
+        it("down to zero once the concert is passed", () => {
+          Given()
+            .anItem(aBackstagePass().veryCloseToConcertDate(1).getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("15 -> 12 -> 0");
+        });
+
         describe("but never bellow 0", () => {
           it(`when its quality was already 0, like 0 -> 0`, () => {
             Given()
