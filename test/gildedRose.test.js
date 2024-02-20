@@ -145,6 +145,27 @@ describe("Gilded Rose", () => {
           .then()
           .itsQualityShouldFollowThisPath("40 -> 39 -> 38 -> 37");
       });
+
+      it(`by two when the sell in is bellow 0, like -2 -> -4 -> -6 -> -8`, () => {
+        Given()
+          .anItem(anAgedBrie().withSellIn(-10).getInstance())
+          .then()
+          .itsQualityShouldFollowThisPath("10 -> 8 -> 6 -> 4");
+      });
+
+      it(`by two only if the item is already bellow zero`, () => {
+        Given()
+          .anItem(anAgedBrie().withSellIn(1).getInstance())
+          .then()
+          .itsQualityShouldFollowThisPath("10 -> 9 -> 7 -> 5");
+      });
+
+      it(`never bellow 0, like 2 -> 1 -> 0 -> 0 -> 0`, () => {
+        Given()
+          .anItem(anAgedBrie().withSellIn(15).getInstance())
+          .then()
+          .itsQualityShouldFollowThisPath("2 -> 1 -> 0 -> 0 -> 0");
+      });
     });
   });
 });

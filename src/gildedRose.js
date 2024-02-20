@@ -5,7 +5,14 @@ export const createGildedRose = (originalItems) => {
     items.forEach((item) => {
       item.updateQuality();
       item.sellIn -= 1;
-      item.quality -= 1;
+
+      if (item.quality > 0) {
+        item.quality -= 1;
+
+        if (item.sellIn < 0) {
+          item.quality -= 1;
+        }
+      }
     });
     return this;
   }
