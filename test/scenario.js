@@ -1,4 +1,5 @@
 import { createGildedRose } from "../src/gildedRose";
+import { quality } from "../src/quality";
 
 export const Given = () => {
   let item;
@@ -41,7 +42,7 @@ export const Given = () => {
 
   function itsQualityShouldFollowThisPath(expectedQualityExpression) {
     const expectedQuality = parseExpectedPath(expectedQualityExpression);
-    item.quality.setValue(expectedQuality[0]);
+    item.quality = quality(expectedQuality[0]);
     for (let i = 1; i < expectedQuality.length; ++i) {
       weUpdateItsQuality();
       itsQualityShouldBe(expectedQuality[i]);
@@ -50,7 +51,7 @@ export const Given = () => {
   }
 
   function itsQualityShouldBe(expectedQuality) {
-    expect(item.quality.getValue()).toEqual(expectedQuality);
+    expect(item.quality.isEqualsTo(expectedQuality)).toBeTruthy();
     return this;
   }
 

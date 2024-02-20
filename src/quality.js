@@ -1,14 +1,6 @@
 export const quality = (givenValue) => {
   let value = givenValue;
 
-  function getValue() {
-    return value;
-  }
-
-  function setValue(newValue) {
-    value = newValue;
-  }
-
   function isGreaterThan(comparedValue) {
     return value > comparedValue;
   }
@@ -17,10 +9,23 @@ export const quality = (givenValue) => {
     return value < comparedValue;
   }
 
+  function isEqualsTo(comparedValue) {
+    return value === comparedValue;
+  }
+
+  function increaseBy(increment) {
+    return quality(value + increment);
+  }
+
+  function decreaseBy(increment) {
+    return quality(value - increment);
+  }
+
   return {
-    getValue,
-    setValue,
     isGreaterThan,
     isLessThan,
+    isEqualsTo,
+    increaseBy,
+    decreaseBy,
   };
 };

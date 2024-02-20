@@ -1,3 +1,5 @@
+import { quality } from "./quality";
+
 export const createGildedRose = (originalItems) => {
   const items = originalItems;
 
@@ -9,21 +11,21 @@ export const createGildedRose = (originalItems) => {
       if (item.name != "AgedBrie" && item.name != "Backstage pass") {
         if (item.quality.isGreaterThan(0)) {
           if (item.name != "Legendary") {
-            item.quality.setValue(item.quality.getValue() - 1);
+            item.quality = item.quality.decreaseBy(1);
           }
         }
       } else {
         if (item.quality.isLessThan(50)) {
-          item.quality.setValue(item.quality.getValue() + 1);
+          item.quality = item.quality.increaseBy(1);
           if (item.name == "Backstage pass") {
             if (item.sellIn < 11) {
-              if (item.quality.getValue() < 50) {
-                item.quality.setValue(item.quality.getValue() + 1);
+              if (item.quality.isLessThan(50)) {
+                item.quality = item.quality.increaseBy(1);
               }
             }
             if (item.sellIn < 6) {
               if (item.quality.isLessThan(50)) {
-                item.quality.setValue(item.quality.getValue() + 1);
+                item.quality = item.quality.increaseBy(1);
               }
             }
           }
@@ -37,17 +39,15 @@ export const createGildedRose = (originalItems) => {
           if (item.name != "Backstage pass") {
             if (item.quality.isGreaterThan(0)) {
               if (item.name != "Legendary") {
-                item.quality.setValue(item.quality.getValue() - 1);
+                item.quality = item.quality.decreaseBy(1);
               }
             }
           } else {
-            item.quality.setValue(
-              item.quality.getValue() - item.quality.getValue()
-            );
+            item.quality = quality(0);
           }
         } else {
           if (item.quality.isLessThan(50)) {
-            item.quality.setValue(item.quality.getValue() + 1);
+            item.quality = item.quality.increaseBy(1);
           }
         }
       }
