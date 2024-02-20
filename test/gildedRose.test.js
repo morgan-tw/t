@@ -52,14 +52,28 @@ const Given = () => {
     return this;
   }
 
-  function itsSellInShouldFollowThisPath(expectedSellInArray) {
-    const expectedSellIn = expectedSellInArray
+  function parseExpectedPath(expectedPathExpression) {
+    return expectedPathExpression
       .split(" -> ")
       .map((sellInExpression) => parseInt(sellInExpression));
+  }
+
+  function itsSellInShouldFollowThisPath(expectedSellInExpression) {
+    const expectedSellIn = parseExpectedPath(expectedSellInExpression);
     item.sellIn = expectedSellIn[0];
     for (let i = 1; i < expectedSellIn.length; ++i) {
       weUpdateItsQuality();
       itsSellInShouldBe(expectedSellIn[i]);
+    }
+    return this;
+  }
+
+  function itsQualityShouldFollowThisPath(expectedQualityExpression) {
+    const expectedQuality = parseExpectedPath(expectedQualityExpression);
+    item.quality = expectedQuality[0];
+    for (let i = 1; i < expectedQuality.length; ++i) {
+      weUpdateItsQuality();
+      itsQualityShouldBe(expectedQuality[i]);
     }
     return this;
   }
@@ -80,6 +94,7 @@ const Given = () => {
     itsSellInShouldBe,
     itsQualityShouldBe,
     itsSellInShouldFollowThisPath,
+    itsQualityShouldFollowThisPath,
   };
 };
 
@@ -124,26 +139,12 @@ describe("Gilded Rose", () => {
     });
 
     describe("it decreases the quality", () => {
-      const itDecreaseTheQualityByOneWhenSellInIsOver0 = (
-        originalSellIn,
-        originalQuality,
-        expectedQuality
-      ) => {
-        it(`by one when the sell in is over 0`, () => {
-          const agedBrie = {
-            name: "AgedBrie",
-            sellIn: originalSellIn,
-            quality: originalQuality,
-            updateQuality: jest.fn(),
-          };
-          const guildedRose = createGildedRose([agedBrie]);
-          guildedRose.updateQuality();
-          expect(agedBrie.quality).toEqual(expectedQuality);
-        });
-      };
-
-      itDecreaseTheQualityByOneWhenSellInIsOver0(4, 15, 14);
-      itDecreaseTheQualityByOneWhenSellInIsOver0(4, 14, 13);
+      it(`by one when the sell in is over 0, like 40 -> 39 -> 38 -> 37`, () => {
+        Given()
+          .anItem(anAgedBrie().withSellIn(50).getInstance())
+          .then()
+          .itsQualityShouldFollowThisPath("40 -> 39 -> 38 -> 37");
+      });
     });
   });
 });
