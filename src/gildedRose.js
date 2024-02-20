@@ -23,6 +23,12 @@ export const createGildedRose = (originalItems) => {
           }
         } else {
           item.quality -= 1;
+          if (item.sellIn < 11) {
+            item.quality -= 1;
+          }
+          if (item.sellIn < 6) {
+            item.quality -= 1;
+          }
         }
       }
     });

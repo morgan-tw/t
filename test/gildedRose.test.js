@@ -144,11 +144,25 @@ describe("Gilded Rose", () => {
       });
 
       describe("decreases the quality", () => {
-        it("by one when the concert if far", () => {
+        it("by one when the concert is far (more than 10 days ahead), like 25 -> 24 -> 23", () => {
           Given()
             .anItem(aBackstagePass().farFromConcertDate(15).getInstance())
             .then()
-            .itsQualityShouldFollowThisPath("15 -> 14 -> 13");
+            .itsQualityShouldFollowThisPath("25 -> 24 -> 23");
+        });
+
+        it("by two as soon as the concert is close, like 25 -> 23 -> 21", () => {
+          Given()
+            .anItem(aBackstagePass().closeToConcertDate(10).getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("25 -> 23 -> 21");
+        });
+
+        it("by three as soon as the concert is very close, like 25 -> 22 -> 19", () => {
+          Given()
+            .anItem(aBackstagePass().veryCloseToConcertDate(5).getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("25 -> 22 -> 19");
         });
       });
     });

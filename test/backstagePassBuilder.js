@@ -23,6 +23,20 @@ export const aBackstagePass = () => {
 
   function farFromConcertDate(daysBeforeConcert) {
     expect(daysBeforeConcert).toBeGreaterThan(10);
+    withSellIn(daysBeforeConcert);
+    return this;
+  }
+
+  function closeToConcertDate(daysBeforeConcert) {
+    expect(daysBeforeConcert).toBeGreaterThan(5);
+    expect(daysBeforeConcert).toBeLessThan(11);
+    withSellIn(daysBeforeConcert);
+    return this;
+  }
+
+  function veryCloseToConcertDate(daysBeforeConcert) {
+    expect(daysBeforeConcert).toBeLessThan(6);
+    withSellIn(daysBeforeConcert);
     return this;
   }
 
@@ -31,5 +45,7 @@ export const aBackstagePass = () => {
     withQuality,
     withSellIn,
     farFromConcertDate,
+    closeToConcertDate,
+    veryCloseToConcertDate,
   };
 };
