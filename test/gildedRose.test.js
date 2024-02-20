@@ -160,11 +160,25 @@ describe("Gilded Rose", () => {
           .itsQualityShouldFollowThisPath("10 -> 9 -> 7 -> 5");
       });
 
-      it(`never bellow 0, like 2 -> 1 -> 0 -> 0 -> 0`, () => {
+      it(`never bellow 0 when the brie is young, like 2 -> 1 -> 0 -> 0`, () => {
         Given()
           .anItem(anAgedBrie().withSellIn(15).getInstance())
           .then()
-          .itsQualityShouldFollowThisPath("2 -> 1 -> 0 -> 0 -> 0");
+          .itsQualityShouldFollowThisPath("2 -> 1 -> 0 -> 0");
+      });
+
+      it(`never bellow 0 even when the brie is mature, like 1 -> 0 -> 0`, () => {
+        Given()
+          .anItem(anAgedBrie().withSellIn(0).getInstance())
+          .then()
+          .itsQualityShouldFollowThisPath("1 -> 0 -> 0");
+      });
+
+      it(`never bellow 0 even when it's quality was already 0, like 0 -> 0`, () => {
+        Given()
+          .anItem(anAgedBrie().withSellIn(0).getInstance())
+          .then()
+          .itsQualityShouldFollowThisPath("0 -> 0");
       });
     });
   });
