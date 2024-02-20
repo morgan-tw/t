@@ -1,6 +1,6 @@
 export const aStandardItem = () => {
   let sellIn = 0,
-    quality = 0;
+    aQuality = 0;
 
   function withSellIn(givenSellIn) {
     sellIn = givenSellIn;
@@ -14,7 +14,7 @@ export const aStandardItem = () => {
   }
 
   function withQuality(givenQuality) {
-    quality = givenQuality;
+    aQuality = givenQuality;
     return this;
   }
 
@@ -22,7 +22,7 @@ export const aStandardItem = () => {
     return {
       name: "Standard item",
       sellIn: sellIn,
-      quality: quality,
+      quality: aQuality,
       updateQuality: jest.fn(),
     };
   }

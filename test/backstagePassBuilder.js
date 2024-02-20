@@ -1,6 +1,6 @@
 export const aBackstagePass = () => {
   let sellIn = 0,
-    quality = 0;
+    aQuality = 0;
 
   function withSellIn(givenSellIn) {
     sellIn = givenSellIn;
@@ -8,7 +8,7 @@ export const aBackstagePass = () => {
   }
 
   function withQuality(givenQuality) {
-    quality = givenQuality;
+    aQuality = givenQuality;
     return this;
   }
 
@@ -16,7 +16,7 @@ export const aBackstagePass = () => {
     return {
       name: "Backstage pass",
       sellIn: sellIn,
-      quality: quality,
+      quality: aQuality,
       updateQuality: jest.fn(),
     };
   }

@@ -1,6 +1,6 @@
 export const aLegendaryItem = () => {
   let sellIn = 0,
-    quality = 0;
+    aQuality = 0;
 
   function withSellIn(givenSellIn) {
     sellIn = givenSellIn;
@@ -8,7 +8,7 @@ export const aLegendaryItem = () => {
   }
 
   function withQuality(givenQuality) {
-    quality = givenQuality;
+    aQuality = givenQuality;
     return this;
   }
 
@@ -16,7 +16,7 @@ export const aLegendaryItem = () => {
     return {
       name: "Legendary",
       sellIn: sellIn,
-      quality: quality,
+      quality: aQuality,
       updateQuality: jest.fn(),
     };
   }

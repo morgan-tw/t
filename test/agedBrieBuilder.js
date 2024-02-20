@@ -1,6 +1,6 @@
 export const anAgedBrie = () => {
   let sellIn = 0,
-    quality = 0;
+    aQuality = 0;
 
   function withSellIn(givenSellIn) {
     sellIn = givenSellIn;
@@ -25,7 +25,7 @@ export const anAgedBrie = () => {
   }
 
   function withQuality(givenQuality) {
-    quality = givenQuality;
+    aQuality = givenQuality;
     return this;
   }
 
@@ -33,7 +33,7 @@ export const anAgedBrie = () => {
     return {
       name: "AgedBrie",
       sellIn: sellIn,
-      quality: quality,
+      quality: aQuality,
       updateQuality: jest.fn(),
     };
   }
