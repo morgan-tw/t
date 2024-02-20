@@ -41,5 +41,28 @@ describe("Gilded Rose", () => {
 
     itDecreasesTheSellInByOne(5, 4);
     itDecreasesTheSellInByOne(2, 1);
+
+    describe("it decreases the quality", () => {
+      const itDecreaseTheQualityByOneWhenSellInIsOver0 = (
+        originalSellIn,
+        originalQuality,
+        expectedQuality
+      ) => {
+        it(`by one when the sell in is over 0`, () => {
+          const agedBrie = {
+            name: "AgedBrie",
+            sellIn: originalSellIn,
+            quality: originalQuality,
+            updateQuality: jest.fn(),
+          };
+          const guildedRose = createGildedRose([agedBrie]);
+          guildedRose.updateQuality();
+          expect(agedBrie.quality).toEqual(expectedQuality);
+        });
+      };
+
+      itDecreaseTheQualityByOneWhenSellInIsOver0(4, 15, 14);
+      itDecreaseTheQualityByOneWhenSellInIsOver0(4, 14, 13);
+    });
   });
 });

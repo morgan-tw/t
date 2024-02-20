@@ -4,10 +4,8 @@ export const createGildedRose = (originalItems) => {
   function UpdateQuality() {
     items.forEach((item) => {
       item.updateQuality();
-
-      if (item.name === "AgedBrie") {
-        item.sellIn -= 1;
-      }
+      item.sellIn -= 1;
+      item.quality -= 1;
     });
     return this;
   }
