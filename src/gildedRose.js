@@ -3,6 +3,10 @@ export const createGildedRose = (originalItems) => {
 
   const getQuality = (item) => item.quality;
 
+  const setQuality = (item, value) => {
+    item.quality = value;
+  };
+
   function UpdateQuality() {
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
@@ -11,21 +15,21 @@ export const createGildedRose = (originalItems) => {
       if (item.name != "AgedBrie" && item.name != "Backstage pass") {
         if (getQuality(item) > 0) {
           if (item.name != "Legendary") {
-            item.quality = getQuality(item) - 1;
+            setQuality(item, getQuality(item) - 1);
           }
         }
       } else {
         if (getQuality(item) < 50) {
-          item.quality = getQuality(item) + 1;
+          setQuality(item, getQuality(item) + 1);
           if (item.name == "Backstage pass") {
             if (item.sellIn < 11) {
               if (getQuality(item) < 50) {
-                item.quality = getQuality(item) + 1;
+                setQuality(item, getQuality(item) + 1);
               }
             }
             if (item.sellIn < 6) {
               if (getQuality(item) < 50) {
-                item.quality = getQuality(item) + 1;
+                setQuality(item, getQuality(item) + 1);
               }
             }
           }
@@ -39,15 +43,15 @@ export const createGildedRose = (originalItems) => {
           if (item.name != "Backstage pass") {
             if (getQuality(item) > 0) {
               if (item.name != "Legendary") {
-                item.quality = getQuality(item) - 1;
+                setQuality(item, getQuality(item) - 1);
               }
             }
           } else {
-            item.quality = getQuality(item) - getQuality(item);
+            setQuality(item, getQuality(item) - getQuality(item));
           }
         } else {
           if (getQuality(item) < 50) {
-            item.quality = getQuality(item) + 1;
+            setQuality(item, getQuality(item) + 1);
           }
         }
       }
