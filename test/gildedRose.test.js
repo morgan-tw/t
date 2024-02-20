@@ -1,5 +1,6 @@
 import { createGildedRose } from "../src/gildedRose";
 import { anAgedBrie } from "./agedBrieBuilder";
+import { aLegendaryItem } from "./lengendaryItemBuilder";
 import { Given } from "./scenario";
 
 describe("Gilded Rose", () => {
@@ -87,6 +88,15 @@ describe("Gilded Rose", () => {
             .then()
             .itsQualityShouldFollowThisPath("47 -> 49 -> 50 -> 50");
         });
+      });
+    });
+
+    describe("for a legendary item", () => {
+      it("never changes the sellIn over time as it is never pass out like 80 -> 80 -> 80 -> 80", () => {
+        Given()
+          .anItem(aLegendaryItem().getInstance())
+          .then()
+          .itsSellInShouldFollowThisPath("80 -> 80 -> 80 -> 80");
       });
     });
   });

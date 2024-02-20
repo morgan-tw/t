@@ -4,7 +4,11 @@ export const createGildedRose = (originalItems) => {
   function UpdateQuality() {
     items.forEach((item) => {
       item.updateQuality();
+
       item.sellIn -= 1;
+      if (item.name === "Legendary") {
+        item.sellIn += 1;
+      }
 
       if (item.quality < 50) {
         item.quality += 1;
