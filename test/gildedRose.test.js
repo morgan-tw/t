@@ -2,6 +2,7 @@ import { createGildedRose } from "../src/gildedRose";
 import { anAgedBrie } from "./agedBrieBuilder";
 import { aLegendaryItem } from "./lengendaryItemBuilder";
 import { aBackstagePass } from "./backstagePassBuilder";
+import { aStandardItem } from "./standardItemBuilder";
 import { Given } from "./scenario";
 
 describe("Gilded Rose", () => {
@@ -198,6 +199,49 @@ describe("Gilded Rose", () => {
         it(`even when it is very close to the concert date, like 1 -> 0 -> 0`, () => {
           Given()
             .anItem(aBackstagePass().veryCloseToConcertDate(4).getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("1 -> 0 -> 0");
+        });
+      });
+    });
+  });
+
+  describe("for a standard item", () => {
+    describe("decreases the sell in", () => {
+      it(`by one whatever its quality is, like 15 -> 14 -> 13 -> 12 -> 11 -> 10`, () => {
+        Given()
+          .anItem(aStandardItem().getInstance())
+          .then()
+          .itsSellInShouldFollowThisPath("15 -> 14 -> 13 -> 12 -> 11 -> 10");
+      });
+
+      it(`even bellow zero like 1 -> 0 -> -1 -> -2`, () => {
+        Given()
+          .anItem(aStandardItem().getInstance())
+          .then()
+          .itsSellInShouldFollowThisPath("1 -> 0 -> -1 -> -2");
+      });
+    });
+
+    describe("decreases the quality", () => {
+      describe("but never bellow 0", () => {
+        it(`when its quality was already 0, like 0 -> 0`, () => {
+          Given()
+            .anItem(aStandardItem().getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("0 -> 0");
+        });
+
+        it(`when it is about to pass out, like 1 -> 0 -> 0`, () => {
+          Given()
+            .anItem(aStandardItem().withSellIn(1).getInstance())
+            .then()
+            .itsQualityShouldFollowThisPath("1 -> 0 -> 0");
+        });
+
+        it(`even when it has pass out, like 1 -> 0 -> 0`, () => {
+          Given()
+            .anItem(aStandardItem().withSellIn(-1).getInstance())
             .then()
             .itsQualityShouldFollowThisPath("1 -> 0 -> 0");
         });
