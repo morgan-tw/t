@@ -2,10 +2,12 @@ import { AgedBriePolicy } from "./policies/AgedBriePolicy";
 import { BackstagePassPolicy } from "./policies/BackstagePassPolicy";
 import { StandardPolicy } from "./policies/StandardPolicy";
 import { ComposedPolicy } from "./policies/ComposedPolicy";
+import { LegendaryPolicy } from "./policies/LegendaryPolicy";
 
 const composedPolicy = ComposedPolicy([
   AgedBriePolicy(),
   BackstagePassPolicy(),
+  LegendaryPolicy(),
   StandardPolicy(),
 ]);
 

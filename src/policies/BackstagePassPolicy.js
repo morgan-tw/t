@@ -1,10 +1,8 @@
 import { quality } from "../quality";
 
-const isBackstagePass = (item) => item.name == "Backstage pass";
-
 export const BackstagePassPolicy = () => {
   function isEligible(item) {
-    return isBackstagePass(item);
+    return item.name == "Backstage pass";
   }
 
   function applyTo(item) {

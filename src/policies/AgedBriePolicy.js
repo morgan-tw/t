@@ -1,8 +1,6 @@
-const isAgedBrie = (item) => item.name == "AgedBrie";
-
 export const AgedBriePolicy = () => {
   function isEligible(item) {
-    return isAgedBrie(item);
+    return item.name == "AgedBrie";
   }
 
   function applyTo(item) {

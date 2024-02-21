@@ -5,7 +5,7 @@ const isStandard = (item) =>
 
 export const StandardPolicy = () => {
   function isEligible(item) {
-    return isStandard(item);
+    return true;
   }
 
   function applyTo(item) {
