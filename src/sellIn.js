@@ -1,31 +1,9 @@
-export const sellIn = (givenValue) => {
-  let value = givenValue;
-
-  function isGreaterThan(comparedValue) {
-    return value > comparedValue;
-  }
-
-  function isLessThan(comparedValue) {
-    return value < comparedValue;
-  }
-
-  function isEqualsTo(comparedValue) {
-    return value === comparedValue;
-  }
-
-  function increaseBy(increment) {
-    return sellIn(value + increment);
-  }
-
-  function decreaseBy(increment) {
-    return sellIn(value - increment);
-  }
-
+export const sellIn = (value) => {
   return {
-    isGreaterThan,
-    isLessThan,
-    isEqualsTo,
-    increaseBy,
-    decreaseBy,
+    isGreaterThan: (comparedValue) => value > comparedValue,
+    isLessThan: (comparedValue) => value < comparedValue,
+    isEqualsTo: (comparedValue) => value === comparedValue,
+    increaseBy: (increment) => sellIn(value + increment),
+    decreaseBy: (increment) => sellIn(value - increment),
   };
 };

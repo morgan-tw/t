@@ -1,5 +1,5 @@
-export const regularDecreasePolicy = (givenIncrement) => {
+export const regularDecreasePolicy = (increment) => {
   return {
-    update: (value) => value.decreaseBy(givenIncrement),
+    update: (value) => value.decreaseBy(increment),
   };
 };
