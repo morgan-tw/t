@@ -1,4 +1,4 @@
-export const AgedBriePolicy = () => {
+export const agedBriePolicy = () => {
   function updateQuality(sellIn, quality) {
     let newQuality = quality.increaseByIfLessThanFifty(1);
     if (sellIn.isLessThan(0)) {

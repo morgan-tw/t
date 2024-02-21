@@ -1,9 +1,5 @@
-export const LegendaryPolicy = () => {
-  function updateQuality(sellIn, quality) {
-    return quality;
-  }
-
+export const legendaryPolicy = () => {
   return {
-    updateQuality,
+    updateQuality: (sellIn, quality) => quality,
   };
 };

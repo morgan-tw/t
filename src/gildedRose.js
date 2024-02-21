@@ -1,7 +1,7 @@
-import { AgedBriePolicy } from "./policies/AgedBriePolicy";
-import { BackstagePassPolicy } from "./policies/BackstagePassPolicy";
-import { StandardPolicy } from "./policies/StandardPolicy";
-import { LegendaryPolicy } from "./policies/LegendaryPolicy";
+import { agedBriePolicy } from "./policies/agedBriePolicy";
+import { backstagePassPolicy } from "./policies/backstagePassPolicy";
+import { standardPolicy } from "./policies/standardPolicy";
+import { legendaryPolicy } from "./policies/legendaryPolicy";
 import { regularDecreasePolicy } from "./policies/regularDecreasePolicy";
 import { unchangedPolicy } from "./policies/unchangedPolicy";
 
@@ -14,19 +14,19 @@ const convertDtoToItem = (dto) => {
   switch (dto.name) {
     case "AgedBrie":
       sellInPolicy = regularDecreasePolicy(1);
-      qualityPolicy = AgedBriePolicy();
+      qualityPolicy = agedBriePolicy();
       break;
     case "Backstage pass":
       sellInPolicy = regularDecreasePolicy(1);
-      qualityPolicy = BackstagePassPolicy();
+      qualityPolicy = backstagePassPolicy();
       break;
     case "Legendary":
       sellInPolicy = unchangedPolicy();
-      qualityPolicy = LegendaryPolicy();
+      qualityPolicy = legendaryPolicy();
       break;
     default:
       sellInPolicy = regularDecreasePolicy(1);
-      qualityPolicy = StandardPolicy();
+      qualityPolicy = standardPolicy();
       break;
   }
 

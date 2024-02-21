@@ -1,4 +1,4 @@
-export const StandardPolicy = () => {
+export const standardPolicy = () => {
   function updateQuality(sellIn, quality) {
     let newQuality = quality.decreaseByIfGreaterThanZero(1);
     if (sellIn.isLessThan(0)) {
