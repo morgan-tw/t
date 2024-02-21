@@ -1,10 +1,6 @@
 import { quality } from "../quality";
 
 export const BackstagePassPolicy = () => {
-  function isEligible(name) {
-    return name == "Backstage pass";
-  }
-
   function updateSellIn(sellIn) {
     return sellIn.decreaseBy(1);
   }
@@ -26,7 +22,6 @@ export const BackstagePassPolicy = () => {
   }
 
   return {
-    isEligible,
     updateSellIn,
     updateQuality,
   };

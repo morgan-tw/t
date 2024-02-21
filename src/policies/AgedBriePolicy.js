@@ -1,8 +1,4 @@
 export const AgedBriePolicy = () => {
-  function isEligible(name) {
-    return name == "AgedBrie";
-  }
-
   function updateSellIn(sellIn) {
     return sellIn.decreaseBy(1);
   }
@@ -17,7 +13,6 @@ export const AgedBriePolicy = () => {
   }
 
   return {
-    isEligible,
     updateSellIn,
     updateQuality,
   };

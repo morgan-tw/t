@@ -1,8 +1,4 @@
 export const LegendaryPolicy = () => {
-  function isEligible(name) {
-    return name == "Legendary";
-  }
-
   function updateSellIn(sellIn) {
     return sellIn;
   }
@@ -12,7 +8,6 @@ export const LegendaryPolicy = () => {
   }
 
   return {
-    isEligible,
     updateSellIn,
     updateQuality,
   };

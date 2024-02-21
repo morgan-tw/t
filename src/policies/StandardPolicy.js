@@ -1,8 +1,4 @@
 export const StandardPolicy = () => {
-  function isEligible(item) {
-    return true;
-  }
-
   function updateSellIn(sellIn) {
     return sellIn.decreaseBy(1);
   }
@@ -17,7 +13,6 @@ export const StandardPolicy = () => {
   }
 
   return {
-    isEligible,
     updateSellIn,
     updateQuality,
   };

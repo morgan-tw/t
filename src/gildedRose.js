@@ -1,27 +1,37 @@
 import { AgedBriePolicy } from "./policies/AgedBriePolicy";
 import { BackstagePassPolicy } from "./policies/BackstagePassPolicy";
 import { StandardPolicy } from "./policies/StandardPolicy";
-import { ComposedPolicy } from "./policies/ComposedPolicy";
 import { LegendaryPolicy } from "./policies/LegendaryPolicy";
 
-const composedPolicy = ComposedPolicy([
-  AgedBriePolicy(),
-  BackstagePassPolicy(),
-  LegendaryPolicy(),
-  StandardPolicy(),
-]);
-
 const convertDtoToItem = (dto) => {
-  const policy = composedPolicy;
+  let policy;
+  let sellIn = dto.sellIn;
+  let quality = dto.quality;
+
+  switch (dto.name) {
+    case "AgedBrie":
+      policy = AgedBriePolicy();
+      break;
+    case "Backstage pass":
+      policy = BackstagePassPolicy();
+      break;
+    case "Legendary":
+      policy = LegendaryPolicy();
+      break;
+    default:
+      policy = StandardPolicy();
+      break;
+  }
 
   function updateQuality() {
-    policy.applyTo(this);
+    sellIn = policy.updateSellIn(sellIn);
+    quality = policy.updateQuality(sellIn, quality);
   }
 
   return {
     name: dto.name,
-    sellIn: dto.sellIn,
-    quality: dto.quality,
+    getSellIn: () => sellIn,
+    getQuality: () => quality,
     updateQuality,
   };
 };
@@ -29,9 +39,8 @@ const convertDtoToItem = (dto) => {
 const convertItemToDto = (item) => {
   return {
     name: item.name,
-    sellIn: item.sellIn,
-    quality: item.quality,
-    updateQuality: item.updateQuality,
+    sellIn: item.getSellIn(),
+    quality: item.getQuality(),
   };
 };
 
@@ -41,9 +50,7 @@ export const createGildedRose = (originalItems) => {
 
   function UpdateQuality() {
     for (let i = 0; i < items.length; i++) {
-      const item = items[i];
-
-      item.updateQuality();
+      items[i].updateQuality();
     }
 
     return items.map((item) => convertItemToDto(item));
