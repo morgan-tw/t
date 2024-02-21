@@ -1,11 +1,12 @@
 import { quality } from "../src/quality";
+import { sellIn } from "../src/sellIn";
 
 export const aLegendaryItem = () => {
-  let sellIn = 0,
+  let aSellIn = 0,
     aQuality = 0;
 
   function withSellIn(givenSellIn) {
-    sellIn = givenSellIn;
+    aSellIn = givenSellIn;
     return this;
   }
 
@@ -17,7 +18,7 @@ export const aLegendaryItem = () => {
   function getInstance() {
     return {
       name: "Legendary",
-      sellIn: sellIn,
+      sellIn: sellIn(aSellIn),
       quality: quality(aQuality),
       updateQuality: jest.fn(),
     };

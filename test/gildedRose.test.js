@@ -7,15 +7,22 @@ import { Given } from "./scenario";
 
 describe("Gilded Rose", () => {
   describe("update the quality", () => {
+    const sellIn = {
+      isGreaterThan: jest.fn(),
+      isLessThan: jest.fn(),
+    };
+    sellIn.increaseBy = (n) => sellIn;
+    sellIn.decreaseBy = (n) => sellIn;
     const createItem = () => {
       return {
+        sellIn,
         quality: {
-          getValue: jest.fn(),
-          setValue: jest.fn(),
           isGreaterThan: jest.fn(),
           isLessThan: jest.fn(),
           increaseBy: jest.fn(),
+          increaseByIfLessThanFifty: jest.fn(),
           decreaseBy: jest.fn(),
+          decreaseByIfGreaterThanZero: jest.fn(),
         },
         updateQuality: jest.fn(),
       };

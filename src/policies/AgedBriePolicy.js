@@ -4,10 +4,10 @@ export const AgedBriePolicy = () => {
   }
 
   function applyTo(item) {
-    item.sellIn = item.sellIn - 1;
+    item.sellIn = item.sellIn.decreaseBy(1);
 
     item.quality = item.quality.increaseByIfLessThanFifty(1);
-    if (item.sellIn < 0) {
+    if (item.sellIn.isLessThan(0)) {
       item.quality = item.quality.increaseByIfLessThanFifty(1);
     }
   }

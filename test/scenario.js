@@ -1,5 +1,6 @@
 import { createGildedRose } from "../src/gildedRose";
 import { quality } from "../src/quality";
+import { sellIn } from "../src/sellIn";
 
 export const Given = () => {
   let item;
@@ -20,7 +21,7 @@ export const Given = () => {
   }
 
   function itsSellInShouldBe(expectedSellIn) {
-    expect(item.sellIn).toEqual(expectedSellIn);
+    expect(item.sellIn.isEqualsTo(expectedSellIn)).toBeTruthy();
     return this;
   }
 
@@ -32,7 +33,7 @@ export const Given = () => {
 
   function itsSellInShouldFollowThisPath(expectedSellInExpression) {
     const expectedSellIn = parseExpectedPath(expectedSellInExpression);
-    item.sellIn = expectedSellIn[0];
+    item.sellIn = sellIn(expectedSellIn[0]);
     for (let i = 1; i < expectedSellIn.length; ++i) {
       weUpdateItsQuality();
       itsSellInShouldBe(expectedSellIn[i]);

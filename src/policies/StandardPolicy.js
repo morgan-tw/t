@@ -9,12 +9,12 @@ export const StandardPolicy = () => {
   }
 
   function applyTo(item) {
-    item.sellIn = item.sellIn - 1;
+    item.sellIn = item.sellIn.decreaseBy(1);
 
     if (item.quality.isGreaterThan(0)) {
       item.quality = item.quality.decreaseByIfGreaterThanZero(1);
     }
-    if (item.sellIn < 0) {
+    if (item.sellIn.isLessThan(0)) {
       item.quality = item.quality.decreaseByIfGreaterThanZero(1);
     }
   }

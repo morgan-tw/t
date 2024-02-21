@@ -1,6 +1,6 @@
 export const quality = (givenValue) => {
   const downLimit = 0;
-  const upLimit = 0;
+  const upLimit = 50;
 
   let value = givenValue;
 
@@ -21,7 +21,9 @@ export const quality = (givenValue) => {
   }
 
   function increaseByIfLessThanFifty(increment) {
-    return value + increment < 50 ? quality(value + increment) : quality(50);
+    return value + increment < upLimit
+      ? quality(value + increment)
+      : quality(50);
   }
 
   function decreaseBy(increment) {
@@ -29,7 +31,9 @@ export const quality = (givenValue) => {
   }
 
   function decreaseByIfGreaterThanZero(increment) {
-    return value - increment > 0 ? quality(value - increment) : quality(0);
+    return value - increment > downLimit
+      ? quality(value - increment)
+      : quality(0);
   }
 
   return {
