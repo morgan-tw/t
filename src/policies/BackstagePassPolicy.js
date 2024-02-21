@@ -5,9 +5,11 @@ export const BackstagePassPolicy = () => {
     return name == "Backstage pass";
   }
 
-  function applyTo(item) {
+  function updateSellIn(item) {
     item.sellIn = item.sellIn.decreaseBy(1);
+  }
 
+  function updateQuality(item) {
     item.quality = item.quality.increaseByIfLessThanFifty(1);
     if (item.sellIn.isLessThan(10)) {
       item.quality = item.quality.increaseByIfLessThanFifty(1);
@@ -22,6 +24,7 @@ export const BackstagePassPolicy = () => {
 
   return {
     isEligible,
-    applyTo,
+    updateSellIn,
+    updateQuality,
   };
 };

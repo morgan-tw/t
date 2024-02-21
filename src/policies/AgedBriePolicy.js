@@ -3,9 +3,11 @@ export const AgedBriePolicy = () => {
     return name == "AgedBrie";
   }
 
-  function applyTo(item) {
+  function updateSellIn(item) {
     item.sellIn = item.sellIn.decreaseBy(1);
+  }
 
+  function updateQuality(item) {
     item.quality = item.quality.increaseByIfLessThanFifty(1);
     if (item.sellIn.isLessThan(0)) {
       item.quality = item.quality.increaseByIfLessThanFifty(1);
@@ -14,6 +16,7 @@ export const AgedBriePolicy = () => {
 
   return {
     isEligible,
-    applyTo,
+    updateSellIn,
+    updateQuality,
   };
 };

@@ -3,10 +3,13 @@ export const LegendaryPolicy = () => {
     return name == "Legendary";
   }
 
-  function applyTo(item) {}
+  function updateSellIn(item) {}
+
+  function updateQuality(item) {}
 
   return {
     isEligible,
-    applyTo,
+    updateSellIn,
+    updateQuality,
   };
 };

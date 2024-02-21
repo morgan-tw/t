@@ -8,9 +8,11 @@ export const StandardPolicy = () => {
     return true;
   }
 
-  function applyTo(item) {
+  function updateSellIn(item) {
     item.sellIn = item.sellIn.decreaseBy(1);
+  }
 
+  function updateQuality(item) {
     if (item.quality.isGreaterThan(0)) {
       item.quality = item.quality.decreaseByIfGreaterThanZero(1);
     }
@@ -21,6 +23,7 @@ export const StandardPolicy = () => {
 
   return {
     isEligible,
-    applyTo,
+    updateSellIn,
+    updateQuality,
   };
 };
