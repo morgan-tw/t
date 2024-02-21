@@ -1,5 +1,4 @@
 import { quality } from "../src/quality";
-import { sellIn } from "../src/sellIn";
 
 export const aStandardItem = () => {
   let aSellIn = 0,
@@ -24,7 +23,7 @@ export const aStandardItem = () => {
   function getInstance() {
     return {
       name: "Standard item",
-      sellIn: sellIn(aSellIn),
+      sellIn: aSellIn,
       quality: quality(aQuality),
       updateQuality: jest.fn(),
     };

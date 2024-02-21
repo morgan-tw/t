@@ -1,5 +1,6 @@
 export const sellIn = (value) => {
   return {
+    value: value,
     isGreaterThan: (comparedValue) => value > comparedValue,
     isLessThan: (comparedValue) => value < comparedValue,
     isEqualsTo: (comparedValue) => value === comparedValue,

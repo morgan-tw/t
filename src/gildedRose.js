@@ -4,11 +4,12 @@ import { standardPolicy } from "./policies/standardPolicy";
 import { legendaryPolicy } from "./policies/legendaryPolicy";
 import { regularDecreasePolicy } from "./policies/regularDecreasePolicy";
 import { unchangedPolicy } from "./policies/unchangedPolicy";
+import { sellIn } from "./sellIn";
 
 const convertDtoToItem = (dto) => {
   let sellInPolicy;
   let qualityPolicy;
-  let sellIn = dto.sellIn;
+  let aSellIn = sellIn(dto.sellIn);
   let quality = dto.quality;
 
   switch (dto.name) {
@@ -31,13 +32,13 @@ const convertDtoToItem = (dto) => {
   }
 
   function updateQuality() {
-    sellIn = sellInPolicy.update(sellIn);
-    quality = qualityPolicy.update(sellIn, quality);
+    aSellIn = sellInPolicy.update(aSellIn);
+    quality = qualityPolicy.update(aSellIn, quality);
   }
 
   return {
     name: dto.name,
-    getSellIn: () => sellIn,
+    getSellIn: () => aSellIn,
     getQuality: () => quality,
     updateQuality,
   };
@@ -46,7 +47,7 @@ const convertDtoToItem = (dto) => {
 const convertItemToDto = (item) => {
   return {
     name: item.name,
-    sellIn: item.getSellIn(),
+    sellIn: item.getSellIn().value,
     quality: item.getQuality(),
   };
 };

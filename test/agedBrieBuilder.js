@@ -1,5 +1,4 @@
 import { quality } from "../src/quality";
-import { sellIn } from "../src/sellIn";
 
 export const anAgedBrie = () => {
   let aSellIn = 0,
@@ -35,7 +34,7 @@ export const anAgedBrie = () => {
   function getInstance() {
     return {
       name: "AgedBrie",
-      sellIn: sellIn(aSellIn),
+      sellIn: aSellIn,
       quality: quality(aQuality),
       updateQuality: jest.fn(),
     };
