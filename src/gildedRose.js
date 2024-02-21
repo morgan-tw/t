@@ -5,40 +5,41 @@ import { legendaryPolicy } from "./policies/legendaryPolicy";
 import { regularDecreasePolicy } from "./policies/regularDecreasePolicy";
 import { unchangedPolicy } from "./policies/unchangedPolicy";
 import { sellIn } from "./sellIn";
+import { value } from "./value";
 
 const convertDtoToItem = (dto) => {
   let sellInPolicy;
   let qualityPolicy;
-  let aSellIn = sellIn(dto.sellIn);
+  let aSellIn = sellIn(value(dto.sellIn));
   let quality = dto.quality;
 
   switch (dto.name) {
     case "AgedBrie":
-      sellInPolicy = regularDecreasePolicy(1);
+      aSellIn = sellIn(value(dto.sellIn), regularDecreasePolicy(1));
       qualityPolicy = agedBriePolicy();
       break;
     case "Backstage pass":
-      sellInPolicy = regularDecreasePolicy(1);
+      aSellIn = sellIn(value(dto.sellIn), regularDecreasePolicy(1));
       qualityPolicy = backstagePassPolicy();
       break;
     case "Legendary":
-      sellInPolicy = unchangedPolicy();
+      aSellIn = sellIn(value(dto.sellIn), unchangedPolicy());
       qualityPolicy = legendaryPolicy();
       break;
     default:
-      sellInPolicy = regularDecreasePolicy(1);
+      aSellIn = sellIn(value(dto.sellIn), regularDecreasePolicy(1));
       qualityPolicy = standardPolicy();
       break;
   }
 
   function updateQuality() {
-    aSellIn = sellInPolicy.update(aSellIn);
+    aSellIn = aSellIn.update();
     quality = qualityPolicy.update(aSellIn, quality);
   }
 
   return {
     name: dto.name,
-    getSellIn: () => aSellIn,
+    getSellIn: () => aSellIn.value,
     getQuality: () => quality,
     updateQuality,
   };
@@ -47,7 +48,7 @@ const convertDtoToItem = (dto) => {
 const convertItemToDto = (item) => {
   return {
     name: item.name,
-    sellIn: item.getSellIn().value,
+    sellIn: item.getSellIn(),
     quality: item.getQuality(),
   };
 };

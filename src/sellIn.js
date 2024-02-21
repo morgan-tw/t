@@ -1,10 +1,9 @@
-export const sellIn = (value) => {
+export const sellIn = (aValue, policy) => {
   return {
-    value: value,
-    isGreaterThan: (comparedValue) => value > comparedValue,
-    isLessThan: (comparedValue) => value < comparedValue,
-    isEqualsTo: (comparedValue) => value === comparedValue,
-    increaseBy: (increment) => sellIn(value + increment),
-    decreaseBy: (increment) => sellIn(value - increment),
+    value: aValue.value,
+    isGreaterThan: (comparedValue) => aValue.isGreaterThan(comparedValue),
+    isLessThan: (comparedValue) => aValue.isLessThan(comparedValue),
+    isEqualsTo: (comparedValue) => aValue.isEqualsTo(comparedValue),
+    update: () => sellIn(policy.update(aValue)),
   };
 };
