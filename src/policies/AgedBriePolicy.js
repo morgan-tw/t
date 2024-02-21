@@ -6,8 +6,9 @@ export const AgedBriePolicy = () => {
   }
 
   function applyTo(item) {
-    item.quality = item.quality.increaseByIfLessThanFifty(1);
     item.sellIn = item.sellIn - 1;
+
+    item.quality = item.quality.increaseByIfLessThanFifty(1);
     if (item.sellIn < 0) {
       item.quality = item.quality.increaseByIfLessThanFifty(1);
     }
