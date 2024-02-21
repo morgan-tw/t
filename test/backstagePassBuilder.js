@@ -18,7 +18,7 @@ export const aBackstagePass = () => {
     return {
       name: "Backstage pass",
       sellIn: aSellIn,
-      quality: quality(aQuality),
+      quality: aQuality,
       updateQuality: jest.fn(),
     };
   }

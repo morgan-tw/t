@@ -46,7 +46,7 @@ export const Given = () => {
 
   function itsQualityShouldFollowThisPath(expectedQualityExpression) {
     const expectedQuality = parseExpectedPath(expectedQualityExpression);
-    originalItem.quality = quality(expectedQuality[0]);
+    originalItem.quality = expectedQuality[0];
 
     weUpdateItsQuality([originalItem]);
     itsQualityShouldBe(expectedQuality[1]);
@@ -58,7 +58,7 @@ export const Given = () => {
   }
 
   function itsQualityShouldBe(expectedQuality) {
-    expect(savedItems[0].quality.isEqualsTo(expectedQuality)).toBeTruthy();
+    expect(savedItems[0].quality).toEqual(expectedQuality);
     return this;
   }
 

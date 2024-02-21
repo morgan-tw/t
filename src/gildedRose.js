@@ -6,12 +6,12 @@ import { regularDecreasePolicy } from "./policies/regularDecreasePolicy";
 import { unchangedPolicy } from "./policies/unchangedPolicy";
 import { sellIn } from "./sellIn";
 import { value } from "./value";
+import { quality } from "./quality";
 
 const convertDtoToItem = (dto) => {
-  let sellInPolicy;
   let qualityPolicy;
-  let aSellIn = sellIn(value(dto.sellIn));
-  let quality = dto.quality;
+  let aSellIn;
+  let aQuality = quality(dto.quality);
 
   switch (dto.name) {
     case "AgedBrie":
@@ -34,13 +34,15 @@ const convertDtoToItem = (dto) => {
 
   function updateQuality() {
     aSellIn = aSellIn.update();
-    quality = qualityPolicy.update(aSellIn, quality);
+    aQuality = quality(
+      qualityPolicy.update(aSellIn, aQuality, aQuality.aValue)
+    );
   }
 
   return {
     name: dto.name,
     getSellIn: () => aSellIn.value,
-    getQuality: () => quality,
+    getQuality: () => aQuality.value,
     updateQuality,
   };
 };

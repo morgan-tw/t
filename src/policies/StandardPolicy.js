@@ -1,11 +1,11 @@
 export const standardPolicy = () => {
-  function update(sellIn, quality) {
-    let newQuality = quality.decreaseByIfGreaterThanZero(1);
+  function update(sellIn, quality, aValue) {
+    let newValue = aValue.decreaseBy(1);
     if (sellIn.isLessThan(0)) {
-      newQuality = newQuality.decreaseByIfGreaterThanZero(1);
+      newValue = newValue.decreaseBy(1);
     }
 
-    return newQuality;
+    return newValue.value;
   }
 
   return {

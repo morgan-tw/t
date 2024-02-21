@@ -4,6 +4,6 @@ export const sellIn = (aValue, policy) => {
     isGreaterThan: (comparedValue) => aValue.isGreaterThan(comparedValue),
     isLessThan: (comparedValue) => aValue.isLessThan(comparedValue),
     isEqualsTo: (comparedValue) => aValue.isEqualsTo(comparedValue),
-    update: () => sellIn(policy.update(aValue)),
+    update: () => sellIn(policy.update(aValue), policy),
   };
 };

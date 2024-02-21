@@ -18,7 +18,7 @@ export const aLegendaryItem = () => {
     return {
       name: "Legendary",
       sellIn: aSellIn,
-      quality: quality(aQuality),
+      quality: aQuality,
       updateQuality: jest.fn(),
     };
   }

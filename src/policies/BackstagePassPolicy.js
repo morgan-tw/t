@@ -1,20 +1,20 @@
 import { quality } from "../quality";
 
 export const backstagePassPolicy = () => {
-  function update(sellIn, givenQuality) {
+  function update(sellIn, givenQuality, aValue) {
     if (sellIn.isLessThan(0)) {
-      return quality(0);
+      return quality(0).value;
     }
 
-    let newQuality = givenQuality.increaseByIfLessThanFifty(1);
+    let newValue = aValue.increaseBy(1);
     if (sellIn.isLessThan(10)) {
-      newQuality = newQuality.increaseByIfLessThanFifty(1);
+      newValue = newValue.increaseBy(1);
     }
     if (sellIn.isLessThan(5)) {
-      newQuality = newQuality.increaseByIfLessThanFifty(1);
+      newValue = newValue.increaseBy(1);
     }
 
-    return newQuality;
+    return newValue.value;
   }
 
   return {

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1708583743651" clover="3.2.0">
+  <project timestamp="1708583743652" name="All files">
+    <metrics statements="176" coveredstatements="150" conditionals="18" coveredconditionals="18" methods="77" coveredmethods="58" elements="271" coveredelements="226" complexity="0" loc="176" ncloc="176" packages="3" files="16" classes="16"/>
+    <package name="src">
+      <metrics statements="57" coveredstatements="44" conditionals="8" coveredconditionals="8" methods="32" coveredmethods="19"/>
+      <file name="boundedValue.js" path="/Users/morganamouroux/Projects/GildedRoseMine/src/boundedValue.js">
+        <metrics statements="7" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="279" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="87" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="25" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="gildedRose.js" path="/Users/morganamouroux/Projects/GildedRoseMine/src/gildedRose.js">
+        <metrics statements="29" coveredstatements="29" conditionals="4" coveredconditionals="4" methods="9" coveredmethods="9"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="14" count="82" type="stmt"/>
+        <line num="16" count="82" type="cond" truecount="4" falsecount="0"/>
+        <line num="18" count="24" type="stmt"/>
+        <line num="19" count="24" type="stmt"/>
+        <line num="20" count="24" type="stmt"/>
+        <line num="22" count="29" type="stmt"/>
+        <line num="23" count="29" type="stmt"/>
+        <line num="24" count="29" type="stmt"/>
+        <line num="26" count="12" type="stmt"/>
+        <line num="27" count="12" type="stmt"/>
+        <line num="28" count="12" type="stmt"/>
+        <line num="30" count="17" type="stmt"/>
+        <line num="31" count="17" type="stmt"/>
+        <line num="32" count="17" type="stmt"/>
+        <line num="36" count="82" type="stmt"/>
+        <line num="37" count="82" type="stmt"/>
+        <line num="42" count="82" type="stmt"/>
+        <line num="44" count="82" type="stmt"/>
+        <line num="45" count="82" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="82" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="59" count="82" type="stmt"/>
+        <line num="60" count="82" type="stmt"/>
+        <line num="63" count="82" type="stmt"/>
+        <line num="64" count="82" type="stmt"/>
+        <line num="67" count="82" type="stmt"/>
+        <line num="70" count="82" type="stmt"/>
+      </file>
+      <file name="quality.js" path="/Users/morganamouroux/Projects/GildedRoseMine/src/quality.js">
+        <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="167" type="stmt"/>
+        <line num="6" count="167" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+      </file>
+      <file name="sellIn.js" path="/Users/morganamouroux/Projects/GildedRoseMine/src/sellIn.js">
+        <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="164" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="122" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="82" type="stmt"/>
+      </file>
+      <file name="value.js" path="/Users/morganamouroux/Projects/GildedRoseMine/src/value.js">
+        <metrics statements="7" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="152" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="122" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="70" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.policies">
+      <metrics statements="31" coveredstatements="31" conditionals="10" coveredconditionals="10" methods="12" coveredmethods="12"/>
+      <file name="AgedBriePolicy.js" path="/Users/morganamouroux/Projects/GildedRoseMine/src/policies/AgedBriePolicy.js">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="24" type="stmt"/>
+        <line num="4" count="24" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="11" type="stmt"/>
+        <line num="8" count="24" type="stmt"/>
+        <line num="11" count="24" type="stmt"/>
+      </file>
+      <file name="backstagePassPolicy.js" path="/Users/morganamouroux/Projects/GildedRoseMine/src/policies/backstagePassPolicy.js">
+        <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="29" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="9" count="26" type="stmt"/>
+        <line num="10" count="26" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="16" type="stmt"/>
+        <line num="13" count="26" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="10" type="stmt"/>
+        <line num="17" count="26" type="stmt"/>
+        <line num="20" count="29" type="stmt"/>
+      </file>
+      <file name="legendaryPolicy.js" path="/Users/morganamouroux/Projects/GildedRoseMine/src/policies/legendaryPolicy.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+      </file>
+      <file name="regularDecreasePolicy.js" path="/Users/morganamouroux/Projects/GildedRoseMine/src/policies/regularDecreasePolicy.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="70" type="stmt"/>
+        <line num="3" count="70" type="stmt"/>
+      </file>
+      <file name="standardPolicy.js" path="/Users/morganamouroux/Projects/GildedRoseMine/src/policies/standardPolicy.js">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="17" type="stmt"/>
+        <line num="4" count="17" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="8" count="17" type="stmt"/>
+        <line num="11" count="17" type="stmt"/>
+      </file>
+      <file name="unchangedPolicy.js" path="/Users/morganamouroux/Projects/GildedRoseMine/src/policies/unchangedPolicy.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+      </file>
+    </package>
+    <package name="test">
+      <metrics statements="88" coveredstatements="75" conditionals="0" coveredconditionals="0" methods="33" coveredmethods="27"/>
+      <file name="agedBrieBuilder.js" path="/Users/morganamouroux/Projects/GildedRoseMine/test/agedBrieBuilder.js">
+        <metrics statements="17" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="6"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="35" count="8" type="stmt"/>
+        <line num="43" count="8" type="stmt"/>
+      </file>
+      <file name="backstagePassBuilder.js" path="/Users/morganamouroux/Projects/GildedRoseMine/test/backstagePassBuilder.js">
+        <metrics statements="19" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="6"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="13" type="stmt"/>
+        <line num="5" count="13" type="stmt"/>
+        <line num="8" count="11" type="stmt"/>
+        <line num="9" count="11" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="18" count="13" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="35" count="3" type="stmt"/>
+        <line num="36" count="3" type="stmt"/>
+        <line num="40" count="5" type="stmt"/>
+        <line num="41" count="5" type="stmt"/>
+        <line num="42" count="5" type="stmt"/>
+        <line num="45" count="13" type="stmt"/>
+      </file>
+      <file name="lengendaryItemBuilder.js" path="/Users/morganamouroux/Projects/GildedRoseMine/test/lengendaryItemBuilder.js">
+        <metrics statements="9" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+      </file>
+      <file name="scenario.js" path="/Users/morganamouroux/Projects/GildedRoseMine/test/scenario.js">
+        <metrics statements="31" coveredstatements="31" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="32" type="stmt"/>
+        <line num="9" count="32" type="stmt"/>
+        <line num="13" count="32" type="stmt"/>
+        <line num="14" count="32" type="stmt"/>
+        <line num="18" count="82" type="stmt"/>
+        <line num="19" count="82" type="stmt"/>
+        <line num="20" count="82" type="stmt"/>
+        <line num="24" count="30" type="stmt"/>
+        <line num="25" count="30" type="stmt"/>
+        <line num="29" count="32" type="stmt"/>
+        <line num="31" count="114" type="stmt"/>
+        <line num="35" count="8" type="stmt"/>
+        <line num="36" count="8" type="stmt"/>
+        <line num="38" count="8" type="stmt"/>
+        <line num="39" count="8" type="stmt"/>
+        <line num="40" count="8" type="stmt"/>
+        <line num="41" count="22" type="stmt"/>
+        <line num="42" count="22" type="stmt"/>
+        <line num="44" count="8" type="stmt"/>
+        <line num="48" count="24" type="stmt"/>
+        <line num="49" count="24" type="stmt"/>
+        <line num="51" count="24" type="stmt"/>
+        <line num="52" count="24" type="stmt"/>
+        <line num="53" count="24" type="stmt"/>
+        <line num="54" count="28" type="stmt"/>
+        <line num="55" count="28" type="stmt"/>
+        <line num="57" count="24" type="stmt"/>
+        <line num="61" count="52" type="stmt"/>
+        <line num="62" count="52" type="stmt"/>
+        <line num="65" count="32" type="stmt"/>
+      </file>
+      <file name="standardItemBuilder.js" path="/Users/morganamouroux/Projects/GildedRoseMine/test/standardItemBuilder.js">
+        <metrics statements="12" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="7" type="stmt"/>
+        <line num="5" count="7" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="24" count="7" type="stmt"/>
+        <line num="32" count="7" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

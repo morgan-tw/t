@@ -1,48 +1,15 @@
+import { boundedValue } from "./boundedValue";
+
 export const quality = (givenValue) => {
-  const downLimit = 0;
-  const upLimit = 50;
-
-  let value = givenValue;
-
-  function isGreaterThan(comparedValue) {
-    return value > comparedValue;
-  }
-
-  function isLessThan(comparedValue) {
-    return value < comparedValue;
-  }
-
-  function isEqualsTo(comparedValue) {
-    return value === comparedValue;
-  }
-
-  function increaseBy(increment) {
-    return quality(value + increment);
-  }
-
-  function increaseByIfLessThanFifty(increment) {
-    return value + increment < upLimit
-      ? quality(value + increment)
-      : quality(50);
-  }
-
-  function decreaseBy(increment) {
-    return quality(value - increment);
-  }
-
-  function decreaseByIfGreaterThanZero(increment) {
-    return value - increment > downLimit
-      ? quality(value - increment)
-      : quality(0);
-  }
+  let aValue = boundedValue(givenValue, 0, 50);
 
   return {
-    isGreaterThan,
-    isLessThan,
-    isEqualsTo,
-    increaseBy,
-    increaseByIfLessThanFifty,
-    decreaseBy,
-    decreaseByIfGreaterThanZero,
+    value: givenValue,
+    aValue: aValue,
+    isGreaterThan: (comparedValue) => aValue.isGreaterThan(comparedValue),
+    isLessThan: (comparedValue) => aValue.isLessThan(comparedValue),
+    isEqualsTo: (comparedValue) => aValue.isEqualsTo(comparedValue),
+    increaseBy: (increment) => quality(aValue.increaseBy(increment).value),
+    decreaseBy: (increment) => quality(aValue.decreaseBy(increment).value),
   };
 };
