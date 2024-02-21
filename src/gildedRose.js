@@ -23,7 +23,7 @@ export const createGildedRose = (originalItems) => {
       composedPolicy.applyTo(item);
     }
 
-    return this;
+    return items;
   }
 
   return {
