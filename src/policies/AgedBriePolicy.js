@@ -3,8 +3,8 @@ export const AgedBriePolicy = () => {
     return name == "AgedBrie";
   }
 
-  function updateSellIn(item) {
-    item.sellIn = item.sellIn.decreaseBy(1);
+  function updateSellIn(sellIn) {
+    return sellIn.decreaseBy(1);
   }
 
   function updateQuality(item) {

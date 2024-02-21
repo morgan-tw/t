@@ -3,7 +3,9 @@ export const LegendaryPolicy = () => {
     return name == "Legendary";
   }
 
-  function updateSellIn(item) {}
+  function updateSellIn(sellIn) {
+    return sellIn;
+  }
 
   function updateQuality(item) {}
 

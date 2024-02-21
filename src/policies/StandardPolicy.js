@@ -1,15 +1,10 @@
-const isStandard = (item) =>
-  item.name != "AgedBrie" &&
-  item.name != "Backstage pass" &&
-  item.name != "Legendary";
-
 export const StandardPolicy = () => {
   function isEligible(item) {
     return true;
   }
 
-  function updateSellIn(item) {
-    item.sellIn = item.sellIn.decreaseBy(1);
+  function updateSellIn(sellIn) {
+    return sellIn.decreaseBy(1);
   }
 
   function updateQuality(item) {
