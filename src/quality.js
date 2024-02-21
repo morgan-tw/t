@@ -1,4 +1,7 @@
 export const quality = (givenValue) => {
+  const downLimit = 0;
+  const upLimit = 0;
+
   let value = givenValue;
 
   function isGreaterThan(comparedValue) {
@@ -17,8 +20,16 @@ export const quality = (givenValue) => {
     return quality(value + increment);
   }
 
+  function increaseByIfLessThanFifty(increment) {
+    return value + increment < 50 ? quality(value + increment) : quality(50);
+  }
+
   function decreaseBy(increment) {
     return quality(value - increment);
+  }
+
+  function decreaseByIfGreaterThanZero(increment) {
+    return value - increment > 0 ? quality(value - increment) : quality(0);
   }
 
   return {
@@ -26,6 +37,8 @@ export const quality = (givenValue) => {
     isLessThan,
     isEqualsTo,
     increaseBy,
+    increaseByIfLessThanFifty,
     decreaseBy,
+    decreaseByIfGreaterThanZero,
   };
 };
