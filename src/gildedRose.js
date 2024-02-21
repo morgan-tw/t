@@ -11,8 +11,12 @@ const composedPolicy = ComposedPolicy([
   StandardPolicy(),
 ]);
 
+const convertDtoToItem = (dto) => dto;
+const convertItemToDto = (item) => item;
+
 export const createGildedRose = (originalItems) => {
-  const items = originalItems;
+  const itemsDtos = originalItems;
+  const items = itemsDtos.map((dto) => convertDtoToItem(dto));
 
   function UpdateQuality() {
     for (let i = 0; i < items.length; i++) {
@@ -23,7 +27,7 @@ export const createGildedRose = (originalItems) => {
       composedPolicy.applyTo(item);
     }
 
-    return items;
+    return items.map((item) => convertItemToDto(item));
   }
 
   return {
