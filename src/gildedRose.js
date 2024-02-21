@@ -3,6 +3,7 @@ import { BackstagePassPolicy } from "./policies/BackstagePassPolicy";
 import { StandardPolicy } from "./policies/StandardPolicy";
 import { LegendaryPolicy } from "./policies/LegendaryPolicy";
 import { regularDecreasePolicy } from "./policies/regularDecreasePolicy";
+import { unchangedPolicy } from "./policies/unchangedPolicy";
 
 const convertDtoToItem = (dto) => {
   let sellInPolicy;
@@ -20,7 +21,7 @@ const convertDtoToItem = (dto) => {
       qualityPolicy = BackstagePassPolicy();
       break;
     case "Legendary":
-      sellInPolicy = LegendaryPolicy();
+      sellInPolicy = unchangedPolicy();
       qualityPolicy = LegendaryPolicy();
       break;
     default:
