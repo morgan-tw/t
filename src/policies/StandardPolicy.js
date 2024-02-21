@@ -1,5 +1,5 @@
 export const standardPolicy = () => {
-  function updateQuality(sellIn, quality) {
+  function update(sellIn, quality) {
     let newQuality = quality.decreaseByIfGreaterThanZero(1);
     if (sellIn.isLessThan(0)) {
       newQuality = newQuality.decreaseByIfGreaterThanZero(1);
@@ -9,6 +9,6 @@ export const standardPolicy = () => {
   }
 
   return {
-    updateQuality,
+    update,
   };
 };

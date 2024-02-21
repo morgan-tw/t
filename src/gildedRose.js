@@ -31,8 +31,8 @@ const convertDtoToItem = (dto) => {
   }
 
   function updateQuality() {
-    sellIn = sellInPolicy.updateSellIn(sellIn);
-    quality = qualityPolicy.updateQuality(sellIn, quality);
+    sellIn = sellInPolicy.update(sellIn);
+    quality = qualityPolicy.update(sellIn, quality);
   }
 
   return {

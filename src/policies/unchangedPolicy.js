@@ -1,5 +1,5 @@
 export const unchangedPolicy = () => {
   return {
-    updateSellIn: (sellIn) => sellIn,
+    update: (value) => value,
   };
 };

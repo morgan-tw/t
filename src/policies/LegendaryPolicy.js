@@ -1,5 +1,5 @@
 export const legendaryPolicy = () => {
   return {
-    updateQuality: (sellIn, quality) => quality,
+    update: (sellIn, quality) => quality,
   };
 };

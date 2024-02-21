@@ -1,7 +1,7 @@
 import { quality } from "../quality";
 
 export const backstagePassPolicy = () => {
-  function updateQuality(sellIn, givenQuality) {
+  function update(sellIn, givenQuality) {
     if (sellIn.isLessThan(0)) {
       return quality(0);
     }
@@ -18,6 +18,6 @@ export const backstagePassPolicy = () => {
   }
 
   return {
-    updateQuality,
+    update,
   };
 };
