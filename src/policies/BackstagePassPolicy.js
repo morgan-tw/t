@@ -9,17 +9,20 @@ export const BackstagePassPolicy = () => {
     return sellIn.decreaseBy(1);
   }
 
-  function updateQuality(item) {
-    item.quality = item.quality.increaseByIfLessThanFifty(1);
-    if (item.sellIn.isLessThan(10)) {
-      item.quality = item.quality.increaseByIfLessThanFifty(1);
+  function updateQuality(sellIn, givenQuality) {
+    if (sellIn.isLessThan(0)) {
+      return quality(0);
     }
-    if (item.sellIn.isLessThan(5)) {
-      item.quality = item.quality.increaseByIfLessThanFifty(1);
+
+    let newQuality = givenQuality.increaseByIfLessThanFifty(1);
+    if (sellIn.isLessThan(10)) {
+      newQuality = newQuality.increaseByIfLessThanFifty(1);
     }
-    if (item.sellIn.isLessThan(0)) {
-      item.quality = quality(0);
+    if (sellIn.isLessThan(5)) {
+      newQuality = newQuality.increaseByIfLessThanFifty(1);
     }
+
+    return newQuality;
   }
 
   return {

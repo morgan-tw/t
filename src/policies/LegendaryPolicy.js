@@ -7,7 +7,9 @@ export const LegendaryPolicy = () => {
     return sellIn;
   }
 
-  function updateQuality(item) {}
+  function updateQuality(sellIn, quality) {
+    return quality;
+  }
 
   return {
     isEligible,

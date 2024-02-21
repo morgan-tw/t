@@ -7,11 +7,13 @@ export const AgedBriePolicy = () => {
     return sellIn.decreaseBy(1);
   }
 
-  function updateQuality(item) {
-    item.quality = item.quality.increaseByIfLessThanFifty(1);
-    if (item.sellIn.isLessThan(0)) {
-      item.quality = item.quality.increaseByIfLessThanFifty(1);
+  function updateQuality(sellIn, quality) {
+    let newQuality = quality.increaseByIfLessThanFifty(1);
+    if (sellIn.isLessThan(0)) {
+      newQuality = newQuality.increaseByIfLessThanFifty(1);
     }
+
+    return newQuality;
   }
 
   return {
