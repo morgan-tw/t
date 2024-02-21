@@ -22,7 +22,7 @@ export const Given = () => {
   }
 
   function itsSellInShouldBe(expectedSellIn) {
-    expect(originalItem.sellIn.isEqualsTo(expectedSellIn)).toBeTruthy();
+    expect(savedItems[0].sellIn.isEqualsTo(expectedSellIn)).toBeTruthy();
     return this;
   }
 
@@ -59,7 +59,7 @@ export const Given = () => {
   }
 
   function itsQualityShouldBe(expectedQuality) {
-    expect(originalItem.quality.isEqualsTo(expectedQuality)).toBeTruthy();
+    expect(savedItems[0].quality.isEqualsTo(expectedQuality)).toBeTruthy();
     return this;
   }
 

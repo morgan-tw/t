@@ -11,8 +11,29 @@ const composedPolicy = ComposedPolicy([
   StandardPolicy(),
 ]);
 
-const convertDtoToItem = (dto) => dto;
-const convertItemToDto = (item) => item;
+const convertDtoToItem = (dto) => {
+  const policy = composedPolicy;
+
+  function updateQuality() {
+    policy.applyTo(this);
+  }
+
+  return {
+    name: dto.name,
+    sellIn: dto.sellIn,
+    quality: dto.quality,
+    updateQuality,
+  };
+};
+
+const convertItemToDto = (item) => {
+  return {
+    name: item.name,
+    sellIn: item.sellIn,
+    quality: item.quality,
+    updateQuality: item.updateQuality,
+  };
+};
 
 export const createGildedRose = (originalItems) => {
   const itemsDtos = originalItems;
@@ -23,8 +44,6 @@ export const createGildedRose = (originalItems) => {
       const item = items[i];
 
       item.updateQuality();
-
-      composedPolicy.applyTo(item);
     }
 
     return items.map((item) => convertItemToDto(item));
