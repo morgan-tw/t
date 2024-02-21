@@ -1,6 +1,6 @@
 export const AgedBriePolicy = () => {
-  function isEligible(item) {
-    return item.name == "AgedBrie";
+  function isEligible(name) {
+    return name == "AgedBrie";
   }
 
   function applyTo(item) {
